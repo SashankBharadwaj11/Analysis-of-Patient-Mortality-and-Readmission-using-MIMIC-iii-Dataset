@@ -294,6 +294,162 @@ Entire preprocessing flow implementation is managed using ColumnTransformer and 
 
 # 7 Model Development
 
+## 1. Objective
+
+The main objectives are to:
+
+- Predict in-hospital mortality using structured clinical features such as length of stay, number of diagnoses, number of procedures, and flags for conditions like sepsis and diabetes.
+
+- Predict 30-day readmission for survivors using similar features.
+
+- Compare and evaluate multiple models: Logistic Regression, XGBoost, CatBoost, and Decision Tree.
+
+- Build an ensemble Voting Classifier using a weighted soft voting approach.
+
+- Apply SHAP (Shapley Additive Explanations) to provide explainability and transparency of model decisions.
+
+- Visualize and interpret performance using metrics like precision, recall, AUC, MCC, and confusion matrices.
+
+## 2. Models Implemented
+
+## Logistic Regression
+- Regularization: L1/L2 penalties applied to avoid overfitting.
+- C: Regularization strength controlled by parameter C.
+
+- Solver: liblinear used to fit the model.
+
+- Class Weight: Set to balanced to account for class imbalance.
+
+- Evaluation Metrics: ROC AUC, Precision/Recall, MCC.
+
+## XGBoost Classifier
+- Tuning Method: Hyperparameters tuned with RandomizedSearchCV.
+
+- Key Hyperparameters:
+-     - n_estimators, max_depth, learning_rate, subsample.
+
+- Best AUC for Mortality: 0.872.
+
+- Interpretability: SHAP used for model interpretation and feature importance.
+
+## CatBoost Classifier
+- Categorical Feature Handling: CatBoost handles categorical variables natively without needing to encode them beforehand.
+
+- Tuning Method: Hyperparameters tuned via grid search, focusing on:
+-     - iterations, learning_rate, depth, l2_leaf_reg.
+
+- Best AUC for Mortality: 0.876.
+
+- Key Strength: Strong performance, especially for mortality prediction.
+
+## Decision Tree Classifier
+- Grid Search: Hyperparameters like max_depth, min_samples_split, min_samples_leaf, and criterion tuned.
+
+- Evaluation: Interpretable model.
+
+- Best AUC for Mortality: 0.848.
+
+## Voting Classifier (Ensemble Model)
+
+- Combination of Models:
+-     - Logistic Regression (LR), XGBoost (XGB), and Decision Tree (DT).
+
+- Voting Method: Soft voting, with weights (LR=1, XGB=2, DT=1).
+
+- Best AUC for Mortality: 0.862.
+
+## 3. Evaluation Metrics
+
+For both mortality and readmission predictions, the following evaluation metrics were used:
+
+RO- C AUC: To evaluate model performance.
+
+- Precision and Recall: Important for understanding the model’s ability to handle imbalanced data.
+
+- Matthews Correlation Coefficient (MCC): Measures the quality of binary classifications.
+
+- Confusion Matrix: For visualizing the classification results.
+
+- SHAP Explanation Plots: To explain model predictions and feature importance.
+
+## 4. Visualizations
+- ROC and PR Curves: To visualize trade-offs between precision and recall.
+
+- Confusion Matrices: Displayed using ConfusionMatrixDisplay to evaluate the classification performance.
+
+- SHAP Plots:
+-     - SHAP summary and bar plots to show feature importance and contribution.
+
+## 5. Model Interpretability Using SHAP
+- SHAP for Interpretability:
+
+-     - Used shap.Explainer for general models and TreeExplainer for tree-based models like XGBoost, CatBoost, and Decision Trees.
+
+      - SHAP Plots: Summary plots and bar plots were used to highlight the most important features affecting model decisions.
+
+      - Ensured SHAP inputs matched post-transformation feature arrays for accurate explanation.
+
+6. Preprocessing and Deployment Pipeline
+
+- Preprocessing: Data preprocessing (e.g., handling missing values, encoding categorical features) was wrapped in a Pipeline for streamlined execution.
+
+- Deployment: The model pipeline is deployment-ready, suitable for integration into a Streamlit or Flask application.
+
+-     - The pipeline ensures consistency in preprocessing during both training and inference.
+
+## 7. Known Issues
+
+- Readmission Prediction: Class imbalance is a challenge for readmission prediction, with low sensitivity. This needs attention, potentially through threshold tuning or SMOTE (Synthetic Minority Over-sampling Technique) to balance the classes.
+
+- Ensemble Interpretability: While SHAP is used for individual components, direct interpretability for the ensemble classifier is not straightforward.
+
+## 8. Technologies Used
+- Python: For scripting and model development.
+
+- Libraries:
+-     - pandas, numpy for data handling.
+-     - matplotlib, seaborn for visualizations.
+-     - SHAP for model interpretability.
+-     - xgboost, catboost, scikit-learn for machine learning models.
+
+## 9. Future Work
+- Threshold Optimization: To improve the recall for readmission prediction, threshold optimization is planned.
+
+- Temporal Validation: Simulate real-world prediction scenarios by incorporating temporal validation.
+
+- Clinical Note Embeddings: Integrating ClinicalBERT embeddings for better prediction signals from clinical notes.
+
+- Model Deployment: Plan to deploy the model using Flask or FastAPI for real-time scoring.
+
+- AutoML and Stacking: Future experiments will involve stacking classifiers or using AutoML tools to further optimize model performance.
+
+## 10. Installation Requirements
+To run the code and models, ensure the following libraries are installed:
+
+- pip install pandas numpy matplotlib seaborn shap xgboost catboost scikit-learn
+
+## 11. Model Results Summary
+
+Model Results Summary
+
+| Model                 | AUC      | MCC      | Sensitivity | Specificity |
+| --------------------- | -------- | -------- | ----------- | ----------- |
+| Logistic              | 0.83     | 0.35     | 0.73        | 0.79        |
+| XGBoost               | 0.87     | 0.41     | 0.26        | 0.99        |
+| CatBoost              | 0.88     | 0.42     | 0.28        | 0.99        |
+| Decision Tree         | 0.85     | 0.40     | 0.79        | 0.77        |
+| **Voting Classifier** | **0.86** | **0.40** | 0.30        | 0.98        |
+
+Readmission Prediction Results (Survivors Only)
+
+| Model                 | AUC      | MCC      | Sensitivity | Specificity |
+| --------------------- | -------- | -------- | ----------- | ----------- |
+| Logistic              | 0.70     | 0.24     | 0.72        | 0.56        |
+| XGBoost               | 0.71     | 0.12     | 0.05        | 0.99        |
+| CatBoost              | 0.72     | 0.14     | 0.08        | 0.98        |
+| Decision Tree         | 0.69     | 0.24     | 0.72        | 0.55        |
+| **Voting Classifier** | **0.69** | **0.17** | 0.20        | 0.92        |
+
 
 # 8 Results 
 
@@ -302,86 +458,6 @@ Entire preprocessing flow implementation is managed using ColumnTransformer and 
 
 # References 
 
-
-📄 Project Overview
-
-This project focuses on predicting in-hospital mortality and 30-day readmission using the MIMIC-III clinical dataset. We explore multiple machine learning models (Logistic Regression, XGBoost, CatBoost, Decision Tree, and an Ensemble Voting Classifier) and conduct thorough preprocessing, feature engineering, model tuning, evaluation, and interpretation.
-
-We utilize a real-world, de-identified dataset (MIMIC-III style) and apply various machine learning models to understand which patients are most at risk — enabling proactive care planning and better clinical outcomes.
-
----
-
-📁 Dataset Description
-
-Data is derived from MIMIC-III v1.4:
-
-ADMISSIONS.csv: Admission/discharge timestamps and outcome
-
-PATIENTS.csv: Demographics (DOB, gender, DOD)
-
-DIAGNOSES_ICD.csv: ICD-9 diagnosis codes
-
-PROCEDURES_ICD.csv: ICD-9 procedure codes
-
-PRESCRIPTIONS.csv: Medication data
-
-Filtered structured features are used in models. Text data (e.g., NOTEEVENTS.csv) is not yet included.
-
-📁 Dataset Description
-
-Data is derived from MIMIC-III v1.4:
-
-ADMISSIONS.csv: Admission/discharge timestamps and outcome
-
-PATIENTS.csv: Demographics (DOB, gender, DOD)
-
-DIAGNOSES_ICD.csv: ICD-9 diagnosis codes
-
-PROCEDURES_ICD.csv: ICD-9 procedure codes
-
-PRESCRIPTIONS.csv: Medication data
-
-Filtered structured features are used in models. Text data (e.g., NOTEEVENTS.csv) is not yet included.
-
-📊 Feature Engineering
-
-1. Continuous Features
-
-LOS_DAYS: Length of stay (in days)
-
-NUM_DIAGNOSES: Number of ICD-9 diagnosis codes
-
-NUM_PROCEDURES: Number of procedures performed
-
-2. Binary Flags
-
-Derived using code prefixes or presence:
-
-HAS_SEPSIS, HAS_DIABETES, HAS_VENT
-
-Insurance: INSURANCE_PUBLIC, INSURANCE_PRIVATE, INSURANCE_OTHER
-
-Discharge: DISCHARGE_GROUP_HOME, DISCHARGE_GROUP_DEATH, etc.
-
-3. Categorical Features
-
-ADMISSION_TYPE, ADMISSION_LOCATION, ETHNICITY
-
-4. Targets
-
-HOSPITAL_EXPIRE_FLAG: Binary (0=survived, 1=died)
-
-future_admission: Binary (0=not readmitted within 30 days, 1=readmitted)
-
-🔧 Preprocessing Pipeline
-
-Standardization: Applied to numeric features
-
-One-hot encoding: Applied to categorical features (drop first category)
-
-Passthrough: Binary features
-
-Managed using ColumnTransformer and Pipeline in scikit-learn
 
 
 🧠 Models Evaluated
@@ -611,17 +687,7 @@ Experiment with stacking classifiers or AutoML
 
 Build a Streamlit UI for end-to-end interaction
 
-## 📁 Project Structure
 
-```bash
-.
-├── data/                  # Raw CSVs (ADMISSIONS.csv, PATIENTS.csv, etc.)
-├── notebooks/             # Jupyter notebooks or Colab workspaces
-├── models/                # Saved model artifacts (optional)
-├── visuals/               # Plots: SHAP, ROC, PR curves, confusion matrices
-├── README.md              # Project documentation
-└── requirements.txt       # Dependencies
-```
 Objectives
 1: Predict in-hospital mortality using structured clinical features
 
