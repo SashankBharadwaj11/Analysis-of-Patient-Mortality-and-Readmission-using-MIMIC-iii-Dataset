@@ -19,10 +19,8 @@
 [3.1.2 Software Requirements](#312-software-requirements)  
 [3.2 Analysis](#32-analysis)  
 
-[4 Dataset Description](#4-Dataset-Description) 
-
+[4 Dataset Description](#4-Dataset-Description)
 [4.1 Overview](4.1-overview)
-
 [4.2 Data Cleaning and Preprocessing](4.2-Data-Cleaning-and-Preprocessing)
 
 [5 Visualizations](#5-visualizations)  
