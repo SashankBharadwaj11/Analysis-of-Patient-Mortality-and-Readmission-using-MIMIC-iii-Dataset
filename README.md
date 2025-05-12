@@ -19,8 +19,8 @@
 [3.1.2 Software Requirements](#312-software-requirements)  
 [3.2 Analysis](#32-analysis)  
 
-[4 Dataset Description](#4-Dataset-Description) 
-[4.1 Overview](4.1-overview) 
+[4 Dataset Description](#4-Dataset-Description)  
+[4.1 Overview](4.1-overview)  
 [4.2 Data Cleaning and Preprocessing](4.2-Data-Cleaning-and-Preprocessing)
 
 [5 Visualizations](#5-visualizations)  
@@ -268,7 +268,7 @@ publicly insured patients consistently have higher mortality rates across all pr
 
 ![image](https://github.com/user-attachments/assets/63ee46de-62b4-4ffe-98b2-6a2d307f8e4d)
 
-# 5 Feature Engineering
+# 6 Feature Engineering
 
 ## 1. Continuous Features
 
@@ -332,16 +332,15 @@ Automation
 Entire preprocessing flow implementation is managed using ColumnTransformer and Pipeline from scikit-learn for modularity, consistency and efficient transformation.
 
 
-6 Model Development
+# 7 Model Development
 
 
-7 Results 
+# 8 Results 
 
-8
 
-9 Conclusion and Future Scope
+# 9 Conclusion and Future Scope
 
-References 
+# References 
 
 
 📄 Project Overview
