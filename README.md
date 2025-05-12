@@ -2,7 +2,7 @@
 
 [Abstract](#Abstract) 
 
-[Contents](#Contents)
+Contents
 
 [1 Introduction](#1-introduction)  
 [1.1 Problem Statement](#11-problem-statement)  
@@ -19,23 +19,31 @@
 [3.1.2 Software Requirements](#312-software-requirements)  
 [3.2 Analysis](#32-analysis)  
 
-[4 Visualizations](#4-visualizations)  
-[5 Model Development](#5-model-development)  
-[6 Results](#6-results)  
-[7](#7)  
-[8 Conclusion and Future Scope](#8-conclusion-and-future-scope)  
+[4 Dataset Description](#4-Dataset-Description)
+[4.1 Overview](4.1-overview)
+[4.2 Data Cleaning and Preprocessing](4.2-Data-Cleaning-and-Preprocessing)
+
+[5 Visualizations](#5-visualizations)  
+
+[6 Feature Engineering](#6-Feature-Engineering)
+
+[7 Model Development](#7-model-development)  
+
+[8 Results](#8-results)  
+
+[9](#9)  
+
+[10 Conclusion and Future Scope](#10-conclusion-and-future-scope)  
 
 [References](#references)
 
-#Abstract
+# Abstract
 
 We propose a multimodal predictive modeling framework aimed at enhancing the prediction of in-hospital mortality and 30-day hospital readmission by integrating both structured and unstructured clinical data from the MIMIC-III dataset. Our approach combines quantitative features such as diagnoses, procedures, and demographic information with narrative insights derived from clinical notes using ClinicalBERT embeddings. This fusion allows us to capture a more holistic view of patient health by leveraging both numeric trends and contextual language patterns in clinical documentation.
 
 To strengthen the temporal understanding of patient trajectories, we incorporate time-stamped clinical events and analyze how the progression of medical conditions impacts outcomes. The model is benchmarked against established baselines including GRU-D and BERT-only architectures to assess its predictive performance. Additionally, we utilize interpretable machine learning techniques such as SHAP to gain insights into model behavior and feature influence.
 
 Ultimately, our goal is to build a robust, interpretable, and scalable system that supports clinicians in identifying high-risk patients early, thereby improving care delivery, reducing readmission rates, and saving lives.
-
-Contents
 
 ## 1 Introduction
 
@@ -45,12 +53,14 @@ Just like virtual assistants have revolutionized the way we handle daily tasks b
 
 With access to massive repositories of clinical data such as MIMIC-III and advancements in machine learning and natural language processing, especially using models like ClinicalBERT, we can now mine valuable insights from both structured data (like lab results, vitals, diagnoses) and unstructured data (like doctor’s notes). These insights enable building intelligent systems that can forecast patient outcomes, guide clinical interventions, and ultimately improve the quality of care. This project builds upon that vision—leveraging openly available clinical datasets and cutting-edge AI to build a virtual assistant for hospitals, capable of predicting readmissions and mortality risk, and supporting smarter, data-driven decisions at the bedside.
 
-1.1 Problem Statement
+# 1.1 Problem Statement
+
 Every year, thousands of patients are readmitted to hospitals within a short time after discharge, and many face increased risk of mortality due to undetected complications or lack of timely intervention. Despite advances in healthcare, predicting such outcomes remains a major challenge for hospitals and care providers. Doctors and nurses are often overwhelmed with large volumes of patient data, making it difficult to manually assess risks or anticipate deteriorations in real-time.
 
 The main agenda of this project is to solve this problem. The solution is to build an intelligent assistant for hospitals that can automatically predict the likelihood of patient readmission and mortality based on both clinical records and physician notes. By using advanced machine learning models and natural language processing techniques, this system can support healthcare professionals in making informed decisions and improve patient outcomes.
 
-1.2 Objectives
+# 1.2 Objectives
+
 The main objective of building a hospital readmission and mortality prediction system is to assist healthcare professionals in identifying high-risk patients early.
 
 Another objective is to reduce preventable hospital readmissions and improve patient outcomes by enabling timely interventions.
@@ -65,7 +75,7 @@ Enhance the use of both structured clinical data and unstructured physician note
 
 Provide actionable insights to doctors and caregivers, helping them prioritize care, manage resources better, and ultimately save lives.
 
-1.3 Societal Applications
+# 1.3 Societal Applications
 
 This application has significant implications for society, especially in improving healthcare delivery and saving lives through proactive medical intervention.
 
@@ -85,13 +95,13 @@ It ensures continuous data monitoring and analysis, helping institutions stay pr
 
 Even with emerging challenges in healthcare, this intelligent system supports consistent, evidence-based decision-making and better resource allocation.
 
-2 Literation Survey
+# 2 Literation Survey
 
-2.1 Introduction
+# 2.1 Introduction
 
 This section presents a review of existing research and systems developed for predicting hospital readmissions and patient mortality. Numerous studies and healthcare analytics solutions have been proposed that leverage data-driven models and machine learning to address these critical issues. These systems typically focus on analyzing patient data to identify those at high risk of readmission or death, enabling timely interventions and better resource allocation.
 
-2.2 Analyzing the Existing System
+# 2.2 Analyzing the Existing System
 
 Many existing systems apply statistical methods and machine learning algorithms to electronic health records (EHRs) for risk prediction. Popular models include Logistic Regression, Decision Trees, Random Forests, and Support Vector Machines (SVMs). More recent approaches use deep learning methods like LSTM and CNNs to capture temporal patterns in clinical data.
 
@@ -101,34 +111,142 @@ One widely known model is the LACE index (Length of stay, Acuity of admission, C
 
 These predictive systems have shown success in identifying at-risk patients, but challenges such as data imbalance, missing values, and interpretability of black-box models remain. Ensuring model fairness and privacy compliance is also essential in clinical applications.
 
-3 Analysis
+# 3 Analysis
 
-3.1 System Requirements
-3.1.1 Hardware Requirements
-3.1.2 Software Requirements
-3.2 Analysis
+# 3.1 System Requirements
 
-4 Visualizations
-1:
+# 3.1.1 Hardware Requirements
+
+# 3.1.2 Software Requirements
+
+# 3.2 Analysis
+
+# 4 Dataset Description
+
+The dataset used in this project is derived from MIMIC-III v1.4, a publicly available critical care database. It consists of multiple tables that provide comprehensive information about patients, their hospital admissions, diagnoses, treatments, and medications. The data spans over 40,000 hospital admissions, offering valuable insights into patient care, outcomes, and hospital performance.
+
+# 4.1 Overview
+
+The dataset consists of 5 main tables, each providing a specific type of information about patients and their hospital stay. These datasets allow for a deep analysis of patient demographics, admission details, medical history (diagnoses and procedures), and treatments (medications).
+
+The data enables a comprehensive approach to understanding patient outcomes, including mortality, readmission, and the impact of various diagnoses, treatments, and patient characteristics. This structured information is essential for building predictive models in healthcare analytics, such as predicting patient outcomes or identifying risk factors for readmission.
+
+The primary datasets included are:
+
+## 1. ADMISSIONS.csv
+
+Description: Contains records related to patient admissions, discharge times, and outcomes.
+
+Information Included:
+
+Admission and discharge timestamps.
+
+Admission types (e.g., emergency, elective).
+
+Discharge locations and outcomes (e.g., home, hospital transfer, death).
+
+## 2. PATIENTS.csv
+
+Description: Provides demographic details of patients.
+
+Information Included:
+
+Patient ID, date of birth (DOB), and gender.
+
+Date of death (DOD) for patients who passed away.
+
+## 3. DIAGNOSES_ICD.csv
+
+Description: Contains ICD-9 diagnosis codes assigned to patients during their hospitalization.
+
+Information Included:
+
+ICD-9 codes for diagnoses.
+
+Admission ID linking to the ADMISSIONS.csv dataset.
+
+## 4. PROCEDURES_ICD.csv
+
+Description: Lists the ICD-9 procedure codes for procedures performed during the hospital stay.
+
+Information Included:
+
+ICD-9 codes for medical procedures.
+
+Admission ID linking to the ADMISSIONS.csv dataset.
+
+## 5. PRESCRIPTIONS.csv
+
+Description: Contains medication prescriptions given to patients during their hospital stay.
+
+Information Included:
+
+Medication names, start, and end dates for prescriptions.
+
+Admission ID and patient ID linking to ADMISSIONS.csv and PATIENTS.csv datasets.
+
+# 4.2 Data Cleaning and Preprocessing
+
+## Handling Missing Data
+
+**DEATHTIME:** Missing for ~53,122 records because many patients did not die during their admission. This was expected and not imputed.
+
+**LANGUAGE:** Missing for a large portion of patients. Imputed using a constant value "Unknown".
+
+**MARITAL_STATUS: **Missing in 10,128 records. Filled with "Unknown" or categorized accordingly.
+
+**RELIGION:** Also had missing values and was imputed similarly using a constant "Unknown".
+
+**EDREGTIME and EDOUTTIME:** Missing in several records and considered irrelevant for the analysis (related to emergency department registration times). These columns were dropped entirely.
+
+## Imputation Strategy
+
+Constant Imputation: Used for categorical fields such as LANGUAGE, MARITAL_STATUS, and RELIGION. Missing values were replaced with a placeholder like "Unknown" to retain the records without introducing bias.
+
+## Column Dropping
+
+Columns with excessive or non-informative missing values (e.g., EDREGTIME, EDOUTTIME) were dropped to reduce noise and maintain model relevance.
+
+## Overall Workflow
+
+Identified missing values.
+
+Determined relevance based on domain knowledge.
+
+Applied appropriate imputation or dropped columns.
+
+Ensured cleaned data was consistent, complete, and ready for modeling.
+
+# 5 Visualizations
+
+# 1: Correlation Heatmap
 ![image](https://github.com/user-attachments/assets/8c67f821-7143-496e-b618-9b5e381c1db3)
 
-Length of Stay (LOS_DAYS): LOS_DAYS demonstrates a moderate positive correlation with both NUM_PROCEDURES and NUM_DIAGNOSES, suggesting that patients undergoing more procedures or diagnosed with more conditions tend to have longer hospital stays.
-Mortality Outcome (HOSPITAL_EXPIRE_FLAG): This variable shows a weak negative correlation with LOS_DAYS (approximately -0.17), indicating that shorter hospital stays are slightly associated with higher mortality rates.
-Multicollinearity Assessment: Most feature correlations are below 0.6, suggesting minimal multicollinearity—a favorable condition for machine learning models, as it reduces the risk of misleading relationships and model instability.
+Length of Stay (LOS_DAYS): LOS_DAYS demonstrates a moderate positive correlation with both NUM_PROCEDURES and NUM_DIAGNOSES, suggesting that patients undergoing more procedures or diagnosed with more conditions tend to have longer hospital stays.
+
+Mortality Outcome (HOSPITAL_EXPIRE_FLAG): This variable shows a weak negative correlation with LOS_DAYS (approximately -0.17), indicating that shorter hospital stays are slightly associated with higher mortality rates.
+
+Multicollinearity Assessment: Most feature correlations are below 0.6, suggesting minimal multicollinearity—a favorable condition for machine learning models, as it reduces the risk of misleading relationships and model instability.
 
 ![image](https://github.com/user-attachments/assets/c0ae5402-655a-4218-a2a7-af40e00a9713)
 
 ![image](https://github.com/user-attachments/assets/93c89ec8-8f4f-4a89-a710-0a9fcc2536ac)
 Out of a total of 58,976 patient cases, 12,456 individuals—approximately 21%—were readmitted to the hospital.
+
 The remaining 46,520 patients (79%) did not experience a subsequent admission.
+
 This notable readmission rate underscores the need for proactive discharge planning and timely interventions.
+
 In effect, nearly one in five patients returned post-discharge, emphasizing the critical role of monitoring and mitigating risks at the point of discharge.
 
 ![image](https://github.com/user-attachments/assets/10c09913-73fe-4320-9706-f20e2360921c)
 
-Mechanical Ventilation (HAS_VENT): Used in 55.1% of patients who died, mechanical ventilation shows a strong link to fatal outcomes, suggesting it is a key indicator of critical illness.
-Sepsis (HAS_SEPSIS): Involved in 23.6% of deaths, sepsis stands out as a major contributing factor, emphasizing the life-threatening nature of severe infections.
-Diabetes (HAS_DIABETES): Found in 21.3% of deceased cases, diabetes also plays a significant role in mortality risk.
+**Mechanical Ventilation (HAS_VENT):** Used in 55.1% of patients who died, mechanical ventilation shows a strong link to fatal outcomes, suggesting it is a key indicator of critical illness.
+
+**Sepsis (HAS_SEPSIS):** Involved in 23.6% of deaths, sepsis stands out as a major contributing factor, emphasizing the life-threatening nature of severe infections.
+
+**Diabetes (HAS_DIABETES):** Found in 21.3% of deceased cases, diabetes also plays a significant role in mortality risk.
+
 Overall, the data indicates that more than half of the patients who died required ventilation, and nearly a quarter had sepsis—underscoring how serious medical conditions heavily impact hospital mortality.
 
 
@@ -143,17 +261,83 @@ Overall, the data indicates that more than half of the patients who died require
 ![image](https://github.com/user-attachments/assets/030683c2-57d5-42ce-890a-23e514494800)
 
 ![image](https://github.com/user-attachments/assets/66860f9f-bc49-4acf-ba03-6a1d9d48d3a1)
+
 publicly insured patients consistently have higher mortality rates across all procedure groups, suggesting possible disparities in outcomes related to insurance coverage and patient severity.
+
 ![image](https://github.com/user-attachments/assets/63ee46de-62b4-4ffe-98b2-6a2d307f8e4d)
 
+# 5 Feature Engineering
 
-5 Model Development
+## 1. Continuous Features
 
-6 Results 
+LOS_DAYS: Length of stay in the hospital (in days).
 
-7
+NUM_DIAGNOSES: Number of ICD-9 diagnosis codes assigned.
 
-8 Conclusion and Future Scope
+NUM_PROCEDURES: Number of procedures performed during admission.
+
+## 2. Binary Flags
+
+HAS_SEPSIS: Indicates whether the patient was diagnosed with sepsis.
+
+HAS_DIABETES: Indicates presence of diabetes in diagnosis codes.
+
+HAS_VENT: Indicates if mechanical ventilation was used during stay.
+
+## 3. Insurance Type (Derived from INSURANCE)
+
+INSURANCE_PUBLIC: Includes government programs (e.g., Medicare, Medicaid).
+
+INSURANCE_PRIVATE: Includes private or employer-sponsored plans.
+
+INSURANCE_OTHER: Self-pay, no insurance, or other forms.
+
+## 4. Discharge Disposition (Grouped from DISCHARGE_LOCATION)
+
+DISCHARGE_GROUP_HOME: Patient discharged to home/self-care.
+
+DISCHARGE_GROUP_DEATH: Discharge resulted in in-hospital death.
+
+## 5. Categorical Features
+
+ADMISSION_TYPE: Nature of admission (e.g., emergency, elective).
+
+ADMISSION_LOCATION: Department/location of initial care.
+
+ETHNICITY: Self-reported ethnicity of the patient.
+
+## 6. Targets
+
+HOSPITAL_EXPIRE_FLAG: Binary target; 0 = survived, 1 = died during hospital stay.
+
+FUTURE_ADMISSION: Binary target; 1 = readmitted within 30 days, 0 = not readmitted.
+
+## 7. Preprocessing Pipeline
+
+DateTime Conversion : ADMITTIME, DISCHTIME converted to datetime objects for time-based feature engineering (e.g., length of stay).
+
+Standardization: Applied to continuous features (LOS_DAYS, NUM_DIAGNOSES, NUM_PROCEDURES).
+
+One-hot encoding: Applied to categorical features (ADMISSION_TYPE, ADMISSION_LOCATION, ETHNICITY), with the first category dropped to avoid multicollinearity.
+
+Scaling
+Applied StandardScaler or MinMaxScaler to continuous features (LOS_DAYS, NUM_DIAGNOSES, NUM_PROCEDURES) to normalize the scale.
+
+Passthrough
+Applied to Binary features (HAS_SEPSIS, HAS_DIABETES, HAS_VENT, insurance and discharge flags) passed without transformation.
+
+Automation
+Entire preprocessing flow implementation is managed using ColumnTransformer and Pipeline from scikit-learn for modularity, consistency and efficient transformation.
+
+
+6 Model Development
+
+
+7 Results 
+
+8
+
+9 Conclusion and Future Scope
 
 References 
 
