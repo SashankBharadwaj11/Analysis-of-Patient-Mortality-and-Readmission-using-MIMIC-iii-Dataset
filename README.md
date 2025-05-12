@@ -55,15 +55,15 @@ Just like virtual assistants have revolutionized the way we handle daily tasks b
 
 With access to massive repositories of clinical data such as MIMIC-III and advancements in machine learning and natural language processing, especially using models like ClinicalBERT, we can now mine valuable insights from both structured data (like lab results, vitals, diagnoses) and unstructured data (like doctor’s notes). These insights enable building intelligent systems that can forecast patient outcomes, guide clinical interventions, and ultimately improve the quality of care. This project builds upon that vision—leveraging openly available clinical datasets and cutting-edge AI to build a virtual assistant for hospitals, capable of predicting readmissions and mortality risk, and supporting smarter, data-driven decisions at the bedside.
 
-# 1.1 Problem Statement
+## 1.1 Problem Statement
 
 Every year, thousands of patients are readmitted to hospitals within a short time after discharge, and many face increased risk of mortality due to undetected complications or lack of timely intervention. Despite advances in healthcare, predicting such outcomes remains a major challenge for hospitals and care providers. Doctors and nurses are often overwhelmed with large volumes of patient data, making it difficult to manually assess risks or anticipate deteriorations in real-time.
 
 The main agenda of this project is to solve this problem. The solution is to build an intelligent assistant for hospitals that can automatically predict the likelihood of patient readmission and mortality based on both clinical records and physician notes. By using advanced machine learning models and natural language processing techniques, this system can support healthcare professionals in making informed decisions and improve patient outcomes.
 
-# 1.2 Objectives
+## 1.2 Objectives
 
-The main objective of building a hospital readmission and mortality prediction system is to assist healthcare professionals in identifying high-risk patients early.
+- The main objective of building a hospital readmission and mortality prediction system is to assist healthcare professionals in identifying high-risk patients early.
 
 Another objective is to reduce preventable hospital readmissions and improve patient outcomes by enabling timely interventions.
 
@@ -77,7 +77,7 @@ Enhance the use of both structured clinical data and unstructured physician note
 
 Provide actionable insights to doctors and caregivers, helping them prioritize care, manage resources better, and ultimately save lives.
 
-# 1.3 Societal Applications
+## 1.3 Societal Applications
 
 This application has significant implications for society, especially in improving healthcare delivery and saving lives through proactive medical intervention.
 
