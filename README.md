@@ -50,7 +50,7 @@ Ultimately, our goal is to build a robust, interpretable, and scalable system th
 
 Contents
 
-1 Introduction
+## 1 Introduction
 
 In today’s data-driven healthcare era, technology is transforming how we understand and respond to patient needs. Hospitals around the world are moving toward smarter, more proactive care models, where predicting a patient’s health trajectory is just as important as treating the present illness. Imagine a system that could warn doctors, “This patient is at high risk of being readmitted within 30 days,” or alert nurses with insights like “This individual’s vital signs suggest a higher risk of mortality.” That’s the power of predictive modeling in healthcare.
 
