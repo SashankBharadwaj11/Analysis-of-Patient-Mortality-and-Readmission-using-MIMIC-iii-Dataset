@@ -312,27 +312,27 @@ The main objectives are to:
 
 ## 2. Models Implemented
 
-## Logistic Regression
+## 1. Logistic Regression
 - Regularization: L1/L2 penalties applied to avoid overfitting.
 - C: Regularization strength controlled by parameter C.
 
 - Solver: liblinear used to fit the model.
 
-- Class Weight: Set to balanced to account for class imbalance.
+- Class Weight: Set to 'balanced' to account for class imbalance.
 
 - Evaluation Metrics: ROC AUC, Precision/Recall, MCC.
 
-## XGBoost Classifier
+## 2. XGBoost Classifier
 - Tuning Method: Hyperparameters tuned with RandomizedSearchCV.
 
-- Key Hyperparameters:
+- Grid Search with Key Hyperparameters:
 -     - n_estimators, max_depth, learning_rate, subsample.
 
 - Best AUC for Mortality: 0.872.
 
 - Interpretability: SHAP used for model interpretation and feature importance.
 
-## CatBoost Classifier
+## 3. CatBoost Classifier
 - Categorical Feature Handling: CatBoost handles categorical variables natively without needing to encode them beforehand.
 
 - Tuning Method: Hyperparameters tuned via grid search, focusing on:
@@ -342,19 +342,19 @@ The main objectives are to:
 
 - Key Strength: Strong performance, especially for mortality prediction.
 
-## Decision Tree Classifier
+## 4. Decision Tree Classifier
 - Grid Search: Hyperparameters like max_depth, min_samples_split, min_samples_leaf, and criterion tuned.
 
 - Evaluation: Interpretable model.
 
 - Best AUC for Mortality: 0.848.
 
-## Voting Classifier (Ensemble Model)
+## 5. Voting Classifier (Ensemble Model)
 
 - Combination of Models:
 -     - Logistic Regression (LR), XGBoost (XGB), and Decision Tree (DT).
 
-- Voting Method: Soft voting, with weights (LR=1, XGB=2, DT=1).
+- Voting Method: 'Soft' voting, with weights (LR=1, XGB=2, DT=1).
 
 - Best AUC for Mortality: 0.862.
 
@@ -362,7 +362,7 @@ The main objectives are to:
 
 For both mortality and readmission predictions, the following evaluation metrics were used:
 
-RO- C AUC: To evaluate model performance.
+ROC, AUC: To evaluate model performance.
 
 - Precision and Recall: Important for understanding the model’s ability to handle imbalanced data.
 
@@ -383,9 +383,9 @@ RO- C AUC: To evaluate model performance.
 ## 5. Model Interpretability Using SHAP
 - SHAP for Interpretability:
 
--     - Used shap.Explainer for general models and TreeExplainer for tree-based models like XGBoost, CatBoost, and Decision Trees.
+-     - Used shap.Explainer for general models and TreeExplainer for tree-based models like XGBoost, CatBoost, and Decision Trees for SHAP values.
 
-      - SHAP Plots: Summary plots and bar plots were used to highlight the most important features affecting model decisions.
+      - SHAP Plots: Summary plots and bar plots were used to highlight the most important features affecting model decisions i.e Feature Ranking.
 
       - Ensured SHAP inputs matched post-transformation feature arrays for accurate explanation.
 
@@ -394,6 +394,8 @@ RO- C AUC: To evaluate model performance.
 - Preprocessing: Data preprocessing (e.g., handling missing values, encoding categorical features) was wrapped in a Pipeline for streamlined execution.
 
 - Deployment: The model pipeline is deployment-ready, suitable for integration into a Streamlit or Flask application.
+
+- Future plans include real-time prediction with ClinicalBERT note embeddings
 
 -     - The pipeline ensures consistency in preprocessing during both training and inference.
 
@@ -458,57 +460,6 @@ Readmission Prediction Results (Survivors Only)
 
 # References 
 
-
-
-🧠 Models Evaluated
-
-1. Logistic Regression
-
-penalty: l1/l2
-
-C: Regularization strength
-
-solver: liblinear
-
-class_weight='balanced'
-
-Evaluation: ROC AUC, Precision/Recall, MCC
-
-2. XGBoost (XGBClassifier)
-
-Tuned with RandomizedSearchCV
-
-Grid: n_estimators, max_depth, learning_rate, subsample
-
-Best AUC (Mortality): 0.872
-
-SHAP used for interpretation
-
-3. CatBoostClassifier
-
-CatBoost handles categorical features natively
-
-Grid: iterations, learning_rate, depth, l2_leaf_reg
-
-Best AUC (Mortality): 0.876
-
-Strong performance, especially on mortality prediction
-
-4. DecisionTreeClassifier
-
-Grid: max_depth, min_samples_split, min_samples_leaf, criterion
-
-Simpler and interpretable
-
-Best AUC (Mortality): 0.848
-
-5. Ensemble Voting Classifier
-
-Combines LogisticRegression, XGBoost, and Decision Tree
-
-voting='soft' with weights: (LR=1, XGB=2, DT=1)
-
-Best AUC (Mortality): 0.862
 
 
 🔝 Performance Summary
