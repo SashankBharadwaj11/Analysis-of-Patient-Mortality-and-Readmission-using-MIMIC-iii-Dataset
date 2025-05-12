@@ -3,19 +3,29 @@
 #Abstract
 
 Contents
+
 1 Introduction
+
 1.1 Problem Statement
+
 1.2 Objectives
+
 1.3 Societal Applications
 
 2 Literation Survey
+
 2.1 Introduction
+
 2.2 Analyzing the Existing System
 
 3 Analysis
+
 3.1 System Requirements
+
 3.1.1 Hardware Requirements
+
 3.1.2 Software Requirements
+
 3.2 Analysis
 
 4 Visualizations
@@ -31,19 +41,22 @@ Contents
 References 
 
 #Abstract
+
 We propose a multimodal predictive modeling framework aimed at enhancing the prediction of in-hospital mortality and 30-day hospital readmission by integrating both structured and unstructured clinical data from the MIMIC-III dataset. Our approach combines quantitative features such as diagnoses, procedures, and demographic information with narrative insights derived from clinical notes using ClinicalBERT embeddings. This fusion allows us to capture a more holistic view of patient health by leveraging both numeric trends and contextual language patterns in clinical documentation.
 
 To strengthen the temporal understanding of patient trajectories, we incorporate time-stamped clinical events and analyze how the progression of medical conditions impacts outcomes. The model is benchmarked against established baselines including GRU-D and BERT-only architectures to assess its predictive performance. Additionally, we utilize interpretable machine learning techniques such as SHAP to gain insights into model behavior and feature influence.
 
 Ultimately, our goal is to build a robust, interpretable, and scalable system that supports clinicians in identifying high-risk patients early, thereby improving care delivery, reducing readmission rates, and saving lives.
+
 Contents
+
 1 Introduction
+
 In today’s data-driven healthcare era, technology is transforming how we understand and respond to patient needs. Hospitals around the world are moving toward smarter, more proactive care models, where predicting a patient’s health trajectory is just as important as treating the present illness. Imagine a system that could warn doctors, “This patient is at high risk of being readmitted within 30 days,” or alert nurses with insights like “This individual’s vital signs suggest a higher risk of mortality.” That’s the power of predictive modeling in healthcare.
 
 Just like virtual assistants have revolutionized the way we handle daily tasks by understanding speech and making intelligent decisions, similar intelligence can be harnessed to support clinical decision-making. Hospital readmissions and in-hospital mortality are critical indicators of healthcare quality and resource utilization. Predicting these outcomes ahead of time could save lives, reduce healthcare costs, and allow for more personalized and preventive care.
 
 With access to massive repositories of clinical data such as MIMIC-III and advancements in machine learning and natural language processing, especially using models like ClinicalBERT, we can now mine valuable insights from both structured data (like lab results, vitals, diagnoses) and unstructured data (like doctor’s notes). These insights enable building intelligent systems that can forecast patient outcomes, guide clinical interventions, and ultimately improve the quality of care. This project builds upon that vision—leveraging openly available clinical datasets and cutting-edge AI to build a virtual assistant for hospitals, capable of predicting readmissions and mortality risk, and supporting smarter, data-driven decisions at the bedside.
-
 
 1.1 Problem Statement
 Every year, thousands of patients are readmitted to hospitals within a short time after discharge, and many face increased risk of mortality due to undetected complications or lack of timely intervention. Despite advances in healthcare, predicting such outcomes remains a major challenge for hospitals and care providers. Doctors and nurses are often overwhelmed with large volumes of patient data, making it difficult to manually assess risks or anticipate deteriorations in real-time.
@@ -66,6 +79,7 @@ Enhance the use of both structured clinical data and unstructured physician note
 Provide actionable insights to doctors and caregivers, helping them prioritize care, manage resources better, and ultimately save lives.
 
 1.3 Societal Applications
+
 This application has significant implications for society, especially in improving healthcare delivery and saving lives through proactive medical intervention.
 
 This system can help hospitals prioritize high-risk patients, reducing preventable deaths and enhancing overall patient care.
@@ -85,9 +99,13 @@ It ensures continuous data monitoring and analysis, helping institutions stay pr
 Even with emerging challenges in healthcare, this intelligent system supports consistent, evidence-based decision-making and better resource allocation.
 
 2 Literation Survey
+
 2.1 Introduction
+
 This section presents a review of existing research and systems developed for predicting hospital readmissions and patient mortality. Numerous studies and healthcare analytics solutions have been proposed that leverage data-driven models and machine learning to address these critical issues. These systems typically focus on analyzing patient data to identify those at high risk of readmission or death, enabling timely interventions and better resource allocation.
+
 2.2 Analyzing the Existing System
+
 Many existing systems apply statistical methods and machine learning algorithms to electronic health records (EHRs) for risk prediction. Popular models include Logistic Regression, Decision Trees, Random Forests, and Support Vector Machines (SVMs). More recent approaches use deep learning methods like LSTM and CNNs to capture temporal patterns in clinical data.
 
 Hospitals and research institutions utilize tools such as Python, R, and platforms like TensorFlow or Scikit-learn to build predictive models. Additionally, frameworks like Apache Spark are used to handle large-scale healthcare datasets.
@@ -97,6 +115,7 @@ One widely known model is the LACE index (Length of stay, Acuity of admission, C
 These predictive systems have shown success in identifying at-risk patients, but challenges such as data imbalance, missing values, and interpretability of black-box models remain. Ensuring model fairness and privacy compliance is also essential in clinical applications.
 
 3 Analysis
+
 3.1 System Requirements
 3.1.1 Hardware Requirements
 3.1.2 Software Requirements
