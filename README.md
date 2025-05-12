@@ -200,35 +200,29 @@ Ensured cleaned data was consistent, complete, and ready for modeling.
 
 ![image](https://github.com/user-attachments/assets/c2d4e465-f9ef-4fdd-ade3-651da4fc2edd)
 
-Out of a total of 58,976 patient cases, 12,456 individuals—approximately 21%—were readmitted to the hospital.
+- Out of a total of 58,976 patient cases, 12,456 individuals—approximately 21%—were readmitted to the hospital.
 
-The remaining 46,520 patients (79%) did not experience a subsequent admission.
+- The remaining 46,520 patients (79%) did not experience a subsequent admission.
 
-This notable readmission rate underscores the need for proactive discharge planning and timely interventions.
+- This notable readmission rate underscores the need for proactive discharge planning and timely interventions.
 
-In effect, nearly one in five patients returned post-discharge, emphasizing the critical role of monitoring and mitigating risks at the point of discharge.
+- In effect, nearly one in five patients returned post-discharge, emphasizing the critical role of monitoring and mitigating risks at the point of discharge.
 
 ![image](https://github.com/user-attachments/assets/1c7114b3-c19f-4372-ac22-d843e60b67be)
 
-**Mechanical Ventilation (HAS_VENT):** Used in 55.1% of patients who died, mechanical ventilation shows a strong link to fatal outcomes, suggesting it is a key indicator of critical illness.
+- **Mechanical Ventilation (HAS_VENT):** Used in 55.1% of patients who died, mechanical ventilation shows a strong link to fatal outcomes, suggesting it is a key indicator of critical illness.
 
-**Sepsis (HAS_SEPSIS):** Involved in 23.6% of deaths, sepsis stands out as a major contributing factor, emphasizing the life-threatening nature of severe infections.
+- **Sepsis (HAS_SEPSIS):** Involved in 23.6% of deaths, sepsis stands out as a major contributing factor, emphasizing the life-threatening nature of severe infections.
 
-**Diabetes (HAS_DIABETES):** Found in 21.3% of deceased cases, diabetes also plays a significant role in mortality risk.
+- **Diabetes (HAS_DIABETES):** Found in 21.3% of deceased cases, diabetes also plays a significant role in mortality risk.
 
-Overall, the data indicates that more than half of the patients who died required ventilation, and nearly a quarter had sepsis—underscoring how serious medical conditions heavily impact hospital mortality.
+- Overall, the data indicates that more than half of the patients who died required ventilation, and nearly a quarter had sepsis—underscoring how serious medical conditions heavily impact hospital mortality.
 
-
-![image](https://github.com/user-attachments/assets/9a424596-b1a0-4a6f-bb82-d07ffb5169a3)
 ![image](https://github.com/user-attachments/assets/85e4d548-8337-40f9-86bf-99c61c8f3fcf)
-
-![image](https://github.com/user-attachments/assets/7add7dfc-d72d-4254-8649-f24c0f7cf042)
 
 "Urgent and emergency admissions are associated with longer hospital stays and more diagnoses, highlighting their higher clinical complexity compared to elective cases."
 
-
-![image](https://github.com/user-attachments/assets/030683c2-57d5-42ce-890a-23e514494800)
-
+![image](https://github.com/user-attachments/assets/ab5f0626-28c2-492a-a024-7f2b4b98d360)
 
 publicly insured patients consistently have higher mortality rates across all procedure groups, suggesting possible disparities in outcomes related to insurance coverage and patient severity.
 
