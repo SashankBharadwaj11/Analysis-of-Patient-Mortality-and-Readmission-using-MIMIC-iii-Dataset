@@ -1,44 +1,31 @@
 # Analysis-of-Patient-Mortality-and-Readmission-using-MIMIC-iii-Dataset
 
-#Abstract
+[Abstract](#Abstract) 
 
-Contents
+[Contents](#Contents)
 
-[1-Introduction](#1-Introduction)
+[1 Introduction](#1-introduction)  
+[1.1 Problem Statement](#11-problem-statement)  
+[1.2 Objectives](#12-objectives)  
+[1.3 Societal Applications](#13-societal-applications)  
 
-1.1 Problem Statement
+[2 Literature Survey](#2-literature-survey)  
+[2.1 Introduction](#21-introduction)  
+[2.2 Analyzing the Existing System](#22-analyzing-the-existing-system)  
 
-1.2 Objectives
+[3 Analysis](#3-analysis)  
+[3.1 System Requirements](#31-system-requirements)  
+[3.1.1 Hardware Requirements](#311-hardware-requirements)  
+[3.1.2 Software Requirements](#312-software-requirements)  
+[3.2 Analysis](#32-analysis)  
 
-1.3 Societal Applications
+[4 Visualizations](#4-visualizations)  
+[5 Model Development](#5-model-development)  
+[6 Results](#6-results)  
+[7](#7)  
+[8 Conclusion and Future Scope](#8-conclusion-and-future-scope)  
 
-2 Literation Survey
-
-2.1 Introduction
-
-2.2 Analyzing the Existing System
-
-3 Analysis
-
-3.1 System Requirements
-
-3.1.1 Hardware Requirements
-
-3.1.2 Software Requirements
-
-3.2 Analysis
-
-4 Visualizations
-
-5 Model Development
-
-6 Results 
-
-7
-
-8 Conclusion and Future Scope
-
-References 
+[References](#references)
 
 #Abstract
 
