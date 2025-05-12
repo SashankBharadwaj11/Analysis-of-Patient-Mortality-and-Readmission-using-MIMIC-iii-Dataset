@@ -133,6 +133,8 @@ The dataset consists of 5 main tables, each providing a specific type of informa
 
 The data enables a comprehensive approach to understanding patient outcomes, including mortality, readmission, and the impact of various diagnoses, treatments, and patient characteristics. This structured information is essential for building predictive models in healthcare analytics, such as predicting patient outcomes or identifying risk factors for readmission.
 
+## Dataset Files
+
 The project utilizes 5 key datasets from the MIMIC-III v1.4 database, each contributing different aspects of a patient’s medical history and hospital stay:
 
 ## 1. ADMISSIONS.csv
@@ -218,7 +220,7 @@ Ensured cleaned data was consistent, complete, and ready for modeling.
 
 - Overall, the data indicates that more than half of the patients who died required ventilation, and nearly a quarter had sepsis—underscoring how serious medical conditions heavily impact hospital mortality.
 
-![image](https://github.com/user-attachments/assets/85e4d548-8337-40f9-86bf-99c61c8f3fcf)
+![image](https://github.com/user-attachments/assets/824ad01f-633d-417d-9a9f-31955c7843ca)
 
 "Urgent and emergency admissions are associated with longer hospital stays and more diagnoses, highlighting their higher clinical complexity compared to elective cases."
 
