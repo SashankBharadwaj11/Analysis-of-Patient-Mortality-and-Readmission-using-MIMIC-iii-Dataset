@@ -65,45 +65,45 @@ The main agenda of this project is to solve this problem. The solution is to bui
 
 - The main objective of building a hospital readmission and mortality prediction system is to assist healthcare professionals in identifying high-risk patients early.
 
-Another objective is to reduce preventable hospital readmissions and improve patient outcomes by enabling timely interventions.
+- Another objective is to reduce preventable hospital readmissions and improve patient outcomes by enabling timely interventions.
 
-Fundamental objectives that maximize the overall value of predictive healthcare systems are accuracy, reliability, and clinical relevance.
+- Fundamental objectives that maximize the overall value of predictive healthcare systems are accuracy, reliability, and clinical relevance.
 
-Design a user-friendly and interpretable system that can be integrated into existing hospital workflows with minimal disruption.
+- Design a user-friendly and interpretable system that can be integrated into existing hospital workflows with minimal disruption.
 
-Improve efficiency in healthcare decision-making by automating the analysis of large-scale patient data using machine learning.
+- Improve efficiency in healthcare decision-making by automating the analysis of large-scale patient data using machine learning.
 
-Enhance the use of both structured clinical data and unstructured physician notes through advanced natural language processing.
+- Enhance the use of both structured clinical data and unstructured physician notes through advanced natural language processing.
 
-Provide actionable insights to doctors and caregivers, helping them prioritize care, manage resources better, and ultimately save lives.
+- Provide actionable insights to doctors and caregivers, helping them prioritize care, manage resources better, and ultimately save lives.
 
 ## 1.3 Societal Applications
 
-This application has significant implications for society, especially in improving healthcare delivery and saving lives through proactive medical intervention.
+- This application has significant implications for society, especially in improving healthcare delivery and saving lives through proactive medical intervention.
 
-This system can help hospitals prioritize high-risk patients, reducing preventable deaths and enhancing overall patient care.
+- This system can help hospitals prioritize high-risk patients, reducing preventable deaths and enhancing overall patient care.
 
-It can support overburdened healthcare systems by streamlining decision-making and reducing manual workload for medical staff.
+- It can support overburdened healthcare systems by streamlining decision-making and reducing manual workload for medical staff.
 
-This project is feasible for future upgrades, including integration with electronic health records and real-time alert systems for critical care.
+- This project is feasible for future upgrades, including integration with electronic health records and real-time alert systems for critical care.
 
-It enhances healthcare equity by using data to identify at-risk individuals who might otherwise be overlooked.
+- It enhances healthcare equity by using data to identify at-risk individuals who might otherwise be overlooked.
 
-It provides timely insights that enable better discharge planning, reducing the emotional and financial burden on patients and families.
+- It provides timely insights that enable better discharge planning, reducing the emotional and financial burden on patients and families.
 
-By automating predictions of adverse outcomes, it allows physicians to focus more on treatment and human interaction rather than data crunching.
+- By automating predictions of adverse outcomes, it allows physicians to focus more on treatment and human interaction rather than data crunching.
 
-It ensures continuous data monitoring and analysis, helping institutions stay prepared and responsive to emergencies.
+- It ensures continuous data monitoring and analysis, helping institutions stay prepared and responsive to emergencies.
 
-Even with emerging challenges in healthcare, this intelligent system supports consistent, evidence-based decision-making and better resource allocation.
+- Even with emerging challenges in healthcare, this intelligent system supports consistent, evidence-based decision-making and better resource allocation.
 
 # 2 Literation Survey
 
-# 2.1 Introduction
+## 2.1 Introduction
 
 This section presents a review of existing research and systems developed for predicting hospital readmissions and patient mortality. Numerous studies and healthcare analytics solutions have been proposed that leverage data-driven models and machine learning to address these critical issues. These systems typically focus on analyzing patient data to identify those at high risk of readmission or death, enabling timely interventions and better resource allocation.
 
-# 2.2 Analyzing the Existing System
+## 2.2 Analyzing the Existing System
 
 Many existing systems apply statistical methods and machine learning algorithms to electronic health records (EHRs) for risk prediction. Popular models include Logistic Regression, Decision Trees, Random Forests, and Support Vector Machines (SVMs). More recent approaches use deep learning methods like LSTM and CNNs to capture temporal patterns in clinical data.
 
@@ -115,77 +115,45 @@ These predictive systems have shown success in identifying at-risk patients, but
 
 # 3 Analysis
 
-# 3.1 System Requirements
+## 3.1 System Requirements
 
-# 3.1.1 Hardware Requirements
+## 3.1.1 Hardware Requirements
 
-# 3.1.2 Software Requirements
+## 3.1.2 Software Requirements
 
-# 3.2 Analysis
+## 3.2 Analysis
 
 # 4 Dataset Description
 
 The dataset used in this project is derived from MIMIC-III v1.4, a publicly available critical care database. It consists of multiple tables that provide comprehensive information about patients, their hospital admissions, diagnoses, treatments, and medications. The data spans over 40,000 hospital admissions, offering valuable insights into patient care, outcomes, and hospital performance.
 
-# 4.1 Overview
+## 4.1 Overview
 
 The dataset consists of 5 main tables, each providing a specific type of information about patients and their hospital stay. These datasets allow for a deep analysis of patient demographics, admission details, medical history (diagnoses and procedures), and treatments (medications).
 
 The data enables a comprehensive approach to understanding patient outcomes, including mortality, readmission, and the impact of various diagnoses, treatments, and patient characteristics. This structured information is essential for building predictive models in healthcare analytics, such as predicting patient outcomes or identifying risk factors for readmission.
 
-The primary datasets included are:
+The project utilizes 5 key datasets from the MIMIC-III v1.4 database, each contributing different aspects of a patient’s medical history and hospital stay:
 
 ## 1. ADMISSIONS.csv
-
-Description: Contains records related to patient admissions, discharge times, and outcomes.
-
-Information Included:
-
-Admission and discharge timestamps.
-
-Admission types (e.g., emergency, elective).
-
-Discharge locations and outcomes (e.g., home, hospital transfer, death).
+Contains admission-related details including timestamps, admission/discharge types and locations, insurance, and outcomes.
+Key Columns: ADMITTIME, DISCHTIME, ADMISSION_TYPE, HOSPITAL_EXPIRE_FLAG
 
 ## 2. PATIENTS.csv
-
-Description: Provides demographic details of patients.
-
-Information Included:
-
-Patient ID, date of birth (DOB), and gender.
-
-Date of death (DOD) for patients who passed away.
+Provides demographic information such as age, gender, and mortality status.
+Key Columns: GENDER, DOB, DOD, EXPIRE_FLAG
 
 ## 3. DIAGNOSES_ICD.csv
-
-Description: Contains ICD-9 diagnosis codes assigned to patients during their hospitalization.
-
-Information Included:
-
-ICD-9 codes for diagnoses.
-
-Admission ID linking to the ADMISSIONS.csv dataset.
+Stores ICD-9 diagnosis codes assigned during hospital stays.
+Key Columns: HADM_ID, ICD9_CODE
 
 ## 4. PROCEDURES_ICD.csv
-
-Description: Lists the ICD-9 procedure codes for procedures performed during the hospital stay.
-
-Information Included:
-
-ICD-9 codes for medical procedures.
-
-Admission ID linking to the ADMISSIONS.csv dataset.
+Lists ICD-9 procedure codes for treatments/procedures performed during admissions.
+Key Columns: HADM_ID, ICD9_CODE
 
 ## 5. PRESCRIPTIONS.csv
-
-Description: Contains medication prescriptions given to patients during their hospital stay.
-
-Information Included:
-
-Medication names, start, and end dates for prescriptions.
-
-Admission ID and patient ID linking to ADMISSIONS.csv and PATIENTS.csv datasets.
+Contains information on medications prescribed during hospitalizations.
+Key Columns: DRUG, STARTDATE, ENDDATE, HADM_ID
 
 # 4.2 Data Cleaning and Preprocessing
 
@@ -221,18 +189,17 @@ Ensured cleaned data was consistent, complete, and ready for modeling.
 
 # 5 Visualizations
 
-# 1: Correlation Heatmap
+## 1: Correlation Heatmap
 ![image](https://github.com/user-attachments/assets/8c67f821-7143-496e-b618-9b5e381c1db3)
 
-Length of Stay (LOS_DAYS): LOS_DAYS demonstrates a moderate positive correlation with both NUM_PROCEDURES and NUM_DIAGNOSES, suggesting that patients undergoing more procedures or diagnosed with more conditions tend to have longer hospital stays.
+- Length of Stay (LOS_DAYS): LOS_DAYS demonstrates a moderate positive correlation with both NUM_PROCEDURES and NUM_DIAGNOSES, suggesting that patients undergoing more procedures or diagnosed with more conditions tend to have longer hospital stays.
 
-Mortality Outcome (HOSPITAL_EXPIRE_FLAG): This variable shows a weak negative correlation with LOS_DAYS (approximately -0.17), indicating that shorter hospital stays are slightly associated with higher mortality rates.
+- Mortality Outcome (HOSPITAL_EXPIRE_FLAG): This variable shows a weak negative correlation with LOS_DAYS (approximately -0.17), indicating that shorter hospital stays are slightly associated with higher mortality rates.
 
-Multicollinearity Assessment: Most feature correlations are below 0.6, suggesting minimal multicollinearity—a favorable condition for machine learning models, as it reduces the risk of misleading relationships and model instability.
+- Multicollinearity Assessment: Most feature correlations are below 0.6, suggesting minimal multicollinearity—a favorable condition for machine learning models, as it reduces the risk of misleading relationships and model instability.
 
-![image](https://github.com/user-attachments/assets/c0ae5402-655a-4218-a2a7-af40e00a9713)
+![image](https://github.com/user-attachments/assets/c2d4e465-f9ef-4fdd-ade3-651da4fc2edd)
 
-![image](https://github.com/user-attachments/assets/93c89ec8-8f4f-4a89-a710-0a9fcc2536ac)
 Out of a total of 58,976 patient cases, 12,456 individuals—approximately 21%—were readmitted to the hospital.
 
 The remaining 46,520 patients (79%) did not experience a subsequent admission.
@@ -241,7 +208,7 @@ This notable readmission rate underscores the need for proactive discharge plann
 
 In effect, nearly one in five patients returned post-discharge, emphasizing the critical role of monitoring and mitigating risks at the point of discharge.
 
-![image](https://github.com/user-attachments/assets/10c09913-73fe-4320-9706-f20e2360921c)
+![image](https://github.com/user-attachments/assets/1c7114b3-c19f-4372-ac22-d843e60b67be)
 
 **Mechanical Ventilation (HAS_VENT):** Used in 55.1% of patients who died, mechanical ventilation shows a strong link to fatal outcomes, suggesting it is a key indicator of critical illness.
 
@@ -262,11 +229,8 @@ Overall, the data indicates that more than half of the patients who died require
 
 ![image](https://github.com/user-attachments/assets/030683c2-57d5-42ce-890a-23e514494800)
 
-![image](https://github.com/user-attachments/assets/66860f9f-bc49-4acf-ba03-6a1d9d48d3a1)
 
 publicly insured patients consistently have higher mortality rates across all procedure groups, suggesting possible disparities in outcomes related to insurance coverage and patient severity.
-
-![image](https://github.com/user-attachments/assets/63ee46de-62b4-4ffe-98b2-6a2d307f8e4d)
 
 # 6 Feature Engineering
 
