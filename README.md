@@ -601,8 +601,6 @@ Readmission Prediction Results (Survivors Only)
 
 ## Clinical Note Embedding Generation using ClinicalBERT
 
-![image](https://github.com/user-attachments/assets/89e4dcca-fe42-4569-8369-3bcdb5f87d38)
-
 ### Dimensionality Reduction & Evaluation of Clinical Note Embeddings
 
 ### t-SNE Projection
@@ -665,12 +663,6 @@ Clinical Note ➝ ClinicalBERT ➝ 768-dim Vector ➝ Concatenate with Structure
 
 - Unstructured: Clinical notes via ClinicalBERT
 
-### Output:
-
-- Mortality risk
-
-- Readmission likelihood
-
 ### Performance Gains:
 
 - Improved Sensitivity and MCC
@@ -678,8 +670,6 @@ Clinical Note ➝ ClinicalBERT ➝ 768-dim Vector ➝ Concatenate with Structure
 - Models became clinically more useful, especially in identifying critical outcomes
 
 ## Evaluation Metrics – Before vs. After Embeddings
-
-![image](https://github.com/user-attachments/assets/2a25a778-e49d-4664-abf0-885daded2615)
 
 ![image](https://github.com/user-attachments/assets/48a31583-a419-4bb5-964f-6ff312d897c4)
 
@@ -692,16 +682,14 @@ Clinical Note ➝ ClinicalBERT ➝ 768-dim Vector ➝ Concatenate with Structure
 INPUT:
 Structured values: LOS, lab flags, age, etc.
 Unstructured note (raw clinical text)
-![image](https://github.com/user-attachments/assets/a988233a-d68c-4638-b047-8ae86cce008a)
 
+![image](https://github.com/user-attachments/assets/3d472a04-0eb8-40b2-b32a-0f69e742b746)
 
+### Output:
 
- Inference![image](https://github.com/user-attachments/assets/f85569fa-e89a-4595-95a6-cf1f0077a831)
+- Mortality risk
 
-
-
-
-# 8 Results 
+- Readmission likelihood
 
 # 9 Conclusion and Future Scope
 
@@ -729,7 +717,6 @@ https://github.com/kexinhuang12345/clinicalBERT
 
 ClinicalBERT Research Paper:
 https://arxiv.org/abs/1904.05342
-
 
 Streamlit
 Streamlit Official Documentation:
