@@ -2,7 +2,7 @@
 
 [Abstract](#Abstract) 
 
-Contents
+[Contents](#Contents)
 
 [1 Introduction](#1-introduction)  
 [1.1 Problem Statement](#11-problem-statement)  
@@ -19,8 +19,10 @@ Contents
 [3.1.2 Software Requirements](#312-software-requirements)  
 [3.2 Analysis](#32-analysis)  
 
-[4 Dataset Description](#4-Dataset-Description)
+[4 Dataset Description](#4-Dataset-Description) 
+
 [4.1 Overview](4.1-overview)
+
 [4.2 Data Cleaning and Preprocessing](4.2-Data-Cleaning-and-Preprocessing)
 
 [5 Visualizations](#5-visualizations)  
@@ -44,6 +46,8 @@ We propose a multimodal predictive modeling framework aimed at enhancing the pre
 To strengthen the temporal understanding of patient trajectories, we incorporate time-stamped clinical events and analyze how the progression of medical conditions impacts outcomes. The model is benchmarked against established baselines including GRU-D and BERT-only architectures to assess its predictive performance. Additionally, we utilize interpretable machine learning techniques such as SHAP to gain insights into model behavior and feature influence.
 
 Ultimately, our goal is to build a robust, interpretable, and scalable system that supports clinicians in identifying high-risk patients early, thereby improving care delivery, reducing readmission rates, and saving lives.
+
+# Contents
 
 ## 1 Introduction
 
