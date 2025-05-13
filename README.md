@@ -23,10 +23,25 @@
 [5 Feature Engineering](#5-Feature-Engineering)
 
 [6 Model Development](#6-model-development)  
+[6.1. Objective](#6.1.-Objective)  
+[6.2. Models Implemented](#6.2.-Models-Implemented)  
+[6.3. Evaluation Metrics](#6.3.-Evaluation-Metrics)  
+[6.4. Visualizations](#6.4.-Visualizations)  
+[6.5. Model Interpretability Using SHAP](#6.5.-Model-Interpretability-Using-SHAP)  
+[6.6. Preprocessing and Deployment Pipeline](#6.6.-Preprocessing-and-Deployment-Pipeline)  
+[6.7. Known Issues](#6.7.-Known-Issues)  
+[6.8. Technologies Used](#6.8.-Technologies-Used)  
+[6.9. Future Work](#6.9.-Future-Work)  
+[6.10. Installation Requirements](#6.10.-Installation-Requirements)  
+[6.11. Features Used](#6.11.-Features-Used)  
+[6.12. Model Results Summary](#6.12.-Model-Results-Summary)  
+[6.13. Best Model](#6.13.-Best-Model)  
+[6.13.1 Best Mortality Prediction Model: CatBoostClassifier](#6.13.1-Best-Mortality-Prediction-Model:-CatBoostClassifier)  
+[6.13.2 Best Readmission Prediction Model: Logistic Regression](#6.13.2-Best-Readmission-Prediction-Model:-Logistic-Regression)  
 
 [7 Results](#7-results)  
 
-[8 Conclusion](#8-Conclusion)
+[8 Conclusion](#8-Conclusion)  
 [8.1 Future Scope](#8.1-Future-Scope)
 
 
