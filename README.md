@@ -5,18 +5,17 @@
 [Contents](#Contents)
 
 [1 Introduction](#1-introduction)  
- [1.1 Problem Statement](#11-problem-statement)  
- [1.2 Objectives](#12-objectives)  
- [1.3 Societal Applications](#13-societal-applications)  
+[1.1 Problem Statement](#11-problem-statement)  
+[1.2 Objectives](#12-objectives)  
+[1.3 Societal Applications](#13-societal-applications)  
 
 [2 Literature Survey](#2-literature-survey)  
- [2.1 Introduction](#21-introduction)  
- [2.2 Analyzing the Existing System](#22-analyzing-the-existing-system)  
-
+[2.1 Introduction](#21-introduction)  
+[2.2 Analyzing the Existing System](#22-analyzing-the-existing-system)  
 
 [3 Dataset Description](#3-Dataset-Description)  
- [3.1 Overview](3.1-overview)  
- [3.2 Data Cleaning and Preprocessing](3.2-Data-Cleaning-and-Preprocessing)
+[3.1 Overview](3.1-overview)  
+[3.2 Data Cleaning and Preprocessing](3.2-Data-Cleaning-and-Preprocessing)
 
 [4 Analysis](#4-analysis)  
 [4.1 Visualizations](#4-visualizations)  
@@ -24,12 +23,27 @@
 [5 Feature Engineering](#5-Feature-Engineering)
 
 [6 Model Development](#6-model-development)  
+[6.1. Objective](#6.1.-Objective)  
+[6.2. Models Implemented](#6.2.-Models-Implemented)  
+[6.3. Evaluation Metrics](#6.3.-Evaluation-Metrics)  
+[6.4. Visualizations](#6.4.-Visualizations)  
+[6.5. Model Interpretability Using SHAP](#6.5.-Model-Interpretability-Using-SHAP)  
+[6.6. Preprocessing and Deployment Pipeline](#6.6.-Preprocessing-and-Deployment-Pipeline)  
+[6.7. Known Issues](#6.7.-Known-Issues)  
+[6.8. Technologies Used](#6.8.-Technologies-Used)  
+[6.9. Future Work](#6.9.-Future-Work)  
+[6.10. Installation Requirements](#6.10.-Installation-Requirements)  
+[6.11. Features Used](#6.11.-Features-Used)  
+[6.12. Model Results Summary](#6.12.-Model-Results-Summary)  
+[6.13. Best Model](#6.13.-Best-Model)  
 
 [7 Results](#7-results)  
 
-[8 Conclusion and Future Scope](#8-conclusion-and-future-scope)  
+[8 Conclusion](#8-Conclusion)  
+[8.1 Future Scope](#8.1-Future-Scope)
 
-[References](#references)
+
+[9 References](#9-References)
 
 # Abstract
 
@@ -708,7 +722,7 @@ Develop a clinical assistant chatbot fine-tuned on patient notes and structured 
 "Summarize the patient’s current medications."
 This chatbot can assist healthcare professionals by automatically extracting insights from patient histories, improving workflow efficiency and reducing manual EHR search time.
 
-# References 
+# 9 References 
 
 MIMIC-III Clinical Database v1.4:
 https://physionet.org/content/mimiciii/
