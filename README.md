@@ -14,21 +14,20 @@
  [2.2 Analyzing the Existing System](#22-analyzing-the-existing-system)  
 
 
-[4 Dataset Description](#4-Dataset-Description)  
- [4.1 Overview](4.1-overview)  
- [4.2 Data Cleaning and Preprocessing](4.2-Data-Cleaning-and-Preprocessing)
+[3 Dataset Description](#3-Dataset-Description)  
+ [3.1 Overview](3.1-overview)  
+ [3.2 Data Cleaning and Preprocessing](3.2-Data-Cleaning-and-Preprocessing)
 
-[3 Analysis](#3-analysis)  
+[4 Analysis](#4-analysis)  
+[4.1 Visualizations](#4-visualizations)  
 
-[5 Visualizations](#5-visualizations)  
+[5 Feature Engineering](#5-Feature-Engineering)
 
-[6 Feature Engineering](#6-Feature-Engineering)
+[6 Model Development](#6-model-development)  
 
-[7 Model Development](#7-model-development)  
+[7 Results](#7-results)  
 
-[8 Results](#8-results)  
-
-[9 Conclusion and Future Scope](#10-conclusion-and-future-scope)  
+[8 Conclusion and Future Scope](#8-conclusion-and-future-scope)  
 
 [References](#references)
 
@@ -108,17 +107,11 @@ One widely known model is the LACE index (Length of stay, Acuity of admission, C
 
 These predictive systems have shown success in identifying at-risk patients, but challenges such as data imbalance, missing values, and interpretability of black-box models remain. Ensuring model fairness and privacy compliance is also essential in clinical applications.
 
-# 3 Analysis
-
-## 3.1 System Requirements
-
-## Software Requirements
-
-# 4 Dataset Description
+# 3 Dataset Description
 
 The dataset used in this project is derived from MIMIC-III v1.4, a publicly available critical care database. It consists of multiple tables that provide comprehensive information about patients, their hospital admissions, diagnoses, treatments, and medications. The data spans over 40,000 hospital admissions, offering valuable insights into patient care, outcomes, and hospital performance.
 
-## 4.1 Overview
+## 3.1 Overview
 
 The dataset consists of 5 main tables, each providing a specific type of information about patients and their hospital stay. These datasets allow for a deep analysis of patient demographics, admission details, medical history (diagnoses and procedures), and treatments (medications).
 
@@ -148,7 +141,11 @@ Key Columns: HADM_ID, ICD9_CODE
 Contains information on medications prescribed during hospitalizations.
 Key Columns: DRUG, STARTDATE, ENDDATE, HADM_ID
 
-# 4.2 Data Cleaning and Preprocessing
+## 6. NOTEEVENTS.csv
+Captures unstructured clinical documentation including discharge summaries, physician notes, and nursing progress notes. This dataset is used for natural language processing (NLP) tasks like embedding generation with ClinicalBERT.
+Key Columns: HADM_ID, CHARTDATE, CATEGORY, TEXT
+
+# 3.2 Data Cleaning and Preprocessing
 
 ## Handling Missing Data
 
@@ -686,7 +683,30 @@ Unstructured note (raw clinical text)
 
 - Readmission likelihood
 
-# 9 Conclusion and Future Scope
+# 9.1 Conclusion
+
+This project successfully demonstrates the potential of combining structured and unstructured electronic health record (EHR) data from the MIMIC-III database to predict critical clinical outcomes such as in-hospital mortality and 30-day readmission. By integrating features from diagnosis codes, procedures, prescriptions, demographics, and admission data with ClinicalBERT embeddings from clinical notes, we built an end-to-end machine learning pipeline using XGBoost classifiers. The fusion of deep contextual embeddings with traditional clinical variables led to noticeable improvements in model performance, particularly in terms of AUC and Matthews Correlation Coefficient (MCC). This highlights the importance of leveraging unstructured clinical text for better patient risk stratification.
+
+#9.2 Future Scope
+
+1. Temporal Modeling:
+Extend the model to incorporate time-series analysis using sequential models (e.g., LSTMs or Transformers) to capture progression over a patient’s stay.
+
+2. Model Generalization:
+Test the pipeline on external EHR datasets or MIMIC-IV to evaluate robustness and generalizability beyond the MIMIC-III cohort.
+
+3. Multi-Modal Fusion Models:
+Explore the integration of lab results, imaging reports, and vitals data with notes and structured features using multi-modal deep learning architectures.
+
+4. Intelligent Clinical Chatbot:
+Develop a clinical assistant chatbot fine-tuned on patient notes and structured data to answer queries such as:
+
+"What is the most recent diagnosis?"
+
+"Was the patient readmitted within 30 days?"
+
+"Summarize the patient’s current medications."
+This chatbot can assist healthcare professionals by automatically extracting insights from patient histories, improving workflow efficiency and reducing manual EHR search time.
 
 # References 
 
