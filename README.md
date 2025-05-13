@@ -36,8 +36,6 @@
 [6.11. Features Used](#6.11.-Features-Used)  
 [6.12. Model Results Summary](#6.12.-Model-Results-Summary)  
 [6.13. Best Model](#6.13.-Best-Model)  
-[6.13.1 Best Mortality Prediction Model: CatBoostClassifier](#6.13.1-Best-Mortality-Prediction-Model:-CatBoostClassifier)  
-[6.13.2 Best Readmission Prediction Model: Logistic Regression](#6.13.2-Best-Readmission-Prediction-Model:-Logistic-Regression)  
 
 [7 Results](#7-results)  
 
