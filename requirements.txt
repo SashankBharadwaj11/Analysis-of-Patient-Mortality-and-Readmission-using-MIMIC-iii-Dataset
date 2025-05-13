@@ -1,27 +1,21 @@
 # Core libraries
-numpy==1.24.4
 pandas==1.5.3
+numpy==1.24.4
 scikit-learn==1.2.2
 matplotlib==3.7.1
 
-# Machine learning
-xgboost==1.7.6
-
-# Streamlit for UI
+# Streamlit app
 streamlit==1.34.0
 
-# Transformers & Embeddings
+# Gradient boosting models
+xgboost==1.7.6
+catboost==1.2.2
+
+# Transformers / ClinicalBERT
 transformers==4.40.1
 torch==2.2.2
 sentencepiece==0.2.0
 tokenizers==0.15.2
 
-# Utilities
-joblib==1.3.2
+# Model explainability
 shap==0.44.1
-
-# For model interpretability and visualization
-seaborn==0.12.2
-
-# HuggingFace models with progress bars
-tqdm==4.66.2
