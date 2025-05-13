@@ -5,23 +5,23 @@
 [Contents](#Contents)
 
 [1 Introduction](#1-introduction)  
-[1.1 Problem Statement](#11-problem-statement)  
-[1.2 Objectives](#12-objectives)  
-[1.3 Societal Applications](#13-societal-applications)  
+ [1.1 Problem Statement](#11-problem-statement)  
+ [1.2 Objectives](#12-objectives)  
+ [1.3 Societal Applications](#13-societal-applications)  
 
 [2 Literature Survey](#2-literature-survey)  
-[2.1 Introduction](#21-introduction)  
-[2.2 Analyzing the Existing System](#22-analyzing-the-existing-system)  
+ [2.1 Introduction](#21-introduction)  
+ [2.2 Analyzing the Existing System](#22-analyzing-the-existing-system)  
 
 [3 Analysis](#3-analysis)  
-[3.1 System Requirements](#31-system-requirements)  
-[3.1.1 Hardware Requirements](#311-hardware-requirements)  
-[3.1.2 Software Requirements](#312-software-requirements)  
-[3.2 Analysis](#32-analysis)  
+ [3.1 System Requirements](#31-system-requirements)  
+ [3.1.1 Hardware Requirements](#311-hardware-requirements)  
+ [3.1.2 Software Requirements](#312-software-requirements)  
+ [3.2 Analysis](#32-analysis)  
 
 [4 Dataset Description](#4-Dataset-Description)  
-[4.1 Overview](4.1-overview)  
-[4.2 Data Cleaning and Preprocessing](4.2-Data-Cleaning-and-Preprocessing)
+ [4.1 Overview](4.1-overview)  
+ [4.2 Data Cleaning and Preprocessing](4.2-Data-Cleaning-and-Preprocessing)
 
 [5 Visualizations](#5-visualizations)  
 
@@ -31,9 +31,7 @@
 
 [8 Results](#8-results)  
 
-[9](#9)  
-
-[10 Conclusion and Future Scope](#10-conclusion-and-future-scope)  
+[9 Conclusion and Future Scope](#10-conclusion-and-future-scope)  
 
 [References](#references)
 
