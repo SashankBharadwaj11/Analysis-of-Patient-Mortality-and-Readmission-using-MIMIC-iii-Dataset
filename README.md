@@ -33,7 +33,7 @@
 
 # Abstract
 
-We propose a multimodal predictive modeling framework aimed at enhancing the prediction of in-hospital mortality and 30-day hospital readmission by integrating both structured and unstructured clinical data from the MIMIC-III dataset. Our approach combines quantitative features such as diagnoses, procedures, and demographic information with narrative insights derived from clinical notes using ClinicalBERT embeddings. This fusion allows us to capture a more holistic view of patient health by leveraging both numeric trends and contextual language patterns in clinical documentation.
+We propose a multimodal predictive modeling framework aimed at enhancing the prediction of in-hospital mortality and hospital readmission by integrating both structured and unstructured clinical data from the MIMIC-III dataset. Our approach combines quantitative features such as diagnoses, procedures, and demographic information with narrative insights derived from clinical notes using ClinicalBERT embeddings. This fusion allows us to capture a more holistic view of patient health by leveraging both numeric trends and contextual language patterns in clinical documentation.
 
 To strengthen the temporal understanding of patient trajectories, we incorporate time-stamped clinical events and analyze how the progression of medical conditions impacts outcomes. The model is benchmarked against established baselines including GRU-D and BERT-only architectures to assess its predictive performance. Additionally, we utilize interpretable machine learning techniques such as SHAP to gain insights into model behavior and feature influence.
 
@@ -43,7 +43,7 @@ Ultimately, our goal is to build a robust, interpretable, and scalable system th
 
 ## 1 Introduction
 
-In today’s data-driven healthcare era, technology is transforming how we understand and respond to patient needs. Hospitals around the world are moving toward smarter, more proactive care models, where predicting a patient’s health trajectory is just as important as treating the present illness. Imagine a system that could warn doctors, “This patient is at high risk of being readmitted within 30 days,” or alert nurses with insights like “This individual’s vital signs suggest a higher risk of mortality.” That’s the power of predictive modeling in healthcare.
+In today’s data-driven healthcare era, technology is transforming how we understand and respond to patient needs. Hospitals around the world are moving toward smarter, more proactive care models, where predicting a patient’s health trajectory is just as important as treating the present illness. Imagine a system that could warn doctors, “This patient is at high risk of being readmitted,” or alert nurses with insights like “This individual’s vital signs suggest a higher risk of mortality.” That’s the power of predictive modeling in healthcare.
 
 Just like virtual assistants have revolutionized the way we handle daily tasks by understanding speech and making intelligent decisions, similar intelligence can be harnessed to support clinical decision-making. Hospital readmissions and in-hospital mortality are critical indicators of healthcare quality and resource utilization. Predicting these outcomes ahead of time could save lives, reduce healthcare costs, and allow for more personalized and preventive care.
 
@@ -177,7 +177,7 @@ Applied appropriate imputation or dropped columns.
 
 Ensured cleaned data was consistent, complete, and ready for modeling.
 
-# 5 Visualizations
+# 4 Visualizations
 
 ## 1: Correlation Heatmap
 ![image](https://github.com/user-attachments/assets/8c67f821-7143-496e-b618-9b5e381c1db3)
@@ -216,7 +216,7 @@ Ensured cleaned data was consistent, complete, and ready for modeling.
 
 publicly insured patients consistently have higher mortality rates across all procedure groups, suggesting possible disparities in outcomes related to insurance coverage and patient severity.
 
-# 6 Feature Engineering
+# 5 Feature Engineering
 
 ## 1. Continuous Features
 
@@ -260,7 +260,7 @@ ETHNICITY: Self-reported ethnicity of the patient.
 
 HOSPITAL_EXPIRE_FLAG: Binary target; 0 = survived, 1 = died during hospital stay.
 
-FUTURE_ADMISSION: Binary target; 1 = readmitted within 30 days, 0 = not readmitted.
+FUTURE_ADMISSION: Binary target; 1 = readmitted, 0 = not readmitted.
 
 ## 7. Preprocessing Pipeline
 
@@ -280,9 +280,9 @@ Automation
 Entire preprocessing flow implementation is managed using ColumnTransformer and Pipeline from scikit-learn for modularity, consistency and efficient transformation.
 
 
-# 7 Model Development
+# 6 Model Development
 
-## 7.1. Objective
+## 6.1. Objective
 
 The main objectives are to:
 
@@ -298,7 +298,7 @@ The main objectives are to:
 
 - Visualize and interpret performance using metrics like precision, recall, AUC, MCC, and confusion matrices.
 
-## 7.2. Models Implemented
+## 6.2. Models Implemented
 
 ## 1. Logistic Regression
 - Regularization: L1/L2 penalties applied to avoid overfitting.
@@ -346,7 +346,7 @@ The main objectives are to:
 
 - Best AUC for Mortality: 0.862.
 
-## 7.3. Evaluation Metrics
+## 6.3. Evaluation Metrics
 
 For both mortality and readmission predictions, the following evaluation metrics were used:
 
@@ -360,7 +360,7 @@ ROC, AUC: To evaluate model performance.
 
 - SHAP Explanation Plots: To explain model predictions and feature importance.
 
-## 7.4. Visualizations
+## 6.4. Visualizations
 - ROC and PR Curves: To visualize trade-offs between precision and recall.
 
 - Confusion Matrices: Displayed using ConfusionMatrixDisplay to evaluate the classification performance.
@@ -368,7 +368,7 @@ ROC, AUC: To evaluate model performance.
 - SHAP Plots:
 -     - SHAP summary and bar plots to show feature importance and contribution.
 
-## 7.5. Model Interpretability Using SHAP
+## 6.5. Model Interpretability Using SHAP
 - SHAP for Interpretability:
 
 -     - Used shap.Explainer for general models and TreeExplainer for tree-based models like XGBoost, CatBoost, and Decision Trees for SHAP values.
@@ -377,7 +377,7 @@ ROC, AUC: To evaluate model performance.
 
       - Ensured SHAP inputs matched post-transformation feature arrays for accurate explanation.
 
-## 7.6. Preprocessing and Deployment Pipeline
+## 6.6. Preprocessing and Deployment Pipeline
 
 - Preprocessing: Data preprocessing (e.g., handling missing values, encoding categorical features) was wrapped in a Pipeline for streamlined execution.
 
@@ -387,13 +387,13 @@ ROC, AUC: To evaluate model performance.
 
 -     - The pipeline ensures consistency in preprocessing during both training and inference.
 
-## 7.7. Known Issues
+## 6.7. Known Issues
 
 - Readmission Prediction: Class imbalance is a challenge for readmission prediction, with low sensitivity. This needs attention, potentially through threshold tuning or SMOTE (Synthetic Minority Over-sampling Technique) to balance the classes.
 
 - Ensemble Interpretability: While SHAP is used for individual components, direct interpretability for the ensemble classifier is not straightforward.
 
-## 7.8. Technologies Used
+## 6.8. Technologies Used
 - Python: For scripting and model development.
 
 - Libraries:
@@ -402,7 +402,7 @@ ROC, AUC: To evaluate model performance.
 -     - SHAP for model interpretability.
 -     - xgboost, catboost, scikit-learn for machine learning models.
 
-## 7.9. Future Work
+## 6.9. Future Work
 - Threshold Optimization: To improve the recall for readmission prediction, threshold optimization is planned.
 
 - Temporal Validation: Simulate real-world prediction scenarios by incorporating temporal validation.
@@ -413,12 +413,12 @@ ROC, AUC: To evaluate model performance.
 
 - AutoML and Stacking: Future experiments will involve stacking classifiers or using AutoML tools to further optimize model performance.
 
-## 7.10. Installation Requirements
+## 6.10. Installation Requirements
 To run the code and models, ensure the following libraries are installed:
 
 - pip install pandas numpy matplotlib seaborn shap xgboost catboost scikit-learn
 
-## 7.11. Features Used
+## 6.11. Features Used
 
 Features Used
 | Feature Type | Features                                                               |
@@ -427,7 +427,7 @@ Features Used
 | Binary       | Sepsis flag, diabetes, ventilator use, insurance type, discharge group |
 | Categorical  | Admission type, admission location, ethnicity                          |
 
-## 7.12. Model Results Summary
+## 6.12. Model Results Summary
 
 Model Results Summary
 
@@ -449,11 +449,11 @@ Readmission Prediction Results (Survivors Only)
 | Decision Tree         | 0.69     | 0.24     | 0.72        | 0.55        |
 | **Voting Classifier** | **0.69** | **0.17** | 0.20        | 0.92        |
 
-## 7.13. Best Model
+## 6.13. Best Model
 
 ![image](https://github.com/user-attachments/assets/4cfead5a-c2bb-4280-8b87-27e8d88aebc6)
 
-## 7.13.1 Best Mortality Prediction Model: CatBoostClassifier
+## 6.13.1 Best Mortality Prediction Model: CatBoostClassifier
 ### Performance Highlights:
 
 - AUC: 0.876 – Highest among all models, indicating strong discrimination between mortality and survival.
@@ -486,7 +486,7 @@ Readmission Prediction Results (Survivors Only)
 
 - Used shap.TreeExplainer and summary plots for feature importance and decision rationale.
 
-## 7.13.2 Best Readmission Prediction Model: Logistic Regression
+## 6.13.2 Best Readmission Prediction Model: Logistic Regression
 
 - Performance Highlights:
 
@@ -529,7 +529,7 @@ Readmission Prediction Results (Survivors Only)
 
 
 
-# 8. Clinical Note Embeddings
+# 7. Clinical Note Embeddings
 
 ## Note Types Selected
 
@@ -683,11 +683,11 @@ Unstructured note (raw clinical text)
 
 - Readmission likelihood
 
-# 9.1 Conclusion
+# 8 Conclusion
 
 This project successfully demonstrates the potential of combining structured and unstructured electronic health record (EHR) data from the MIMIC-III database to predict critical clinical outcomes such as in-hospital mortality and 30-day readmission. By integrating features from diagnosis codes, procedures, prescriptions, demographics, and admission data with ClinicalBERT embeddings from clinical notes, we built an end-to-end machine learning pipeline using XGBoost classifiers. The fusion of deep contextual embeddings with traditional clinical variables led to noticeable improvements in model performance, particularly in terms of AUC and Matthews Correlation Coefficient (MCC). This highlights the importance of leveraging unstructured clinical text for better patient risk stratification.
 
-#9.2 Future Scope
+# 8.1 Future Scope
 
 1. Temporal Modeling:
 Extend the model to incorporate time-series analysis using sequential models (e.g., LSTMs or Transformers) to capture progression over a patient’s stay.
@@ -703,7 +703,7 @@ Develop a clinical assistant chatbot fine-tuned on patient notes and structured 
 
 "What is the most recent diagnosis?"
 
-"Was the patient readmitted within 30 days?"
+"Was the patient readmitted?"
 
 "Summarize the patient’s current medications."
 This chatbot can assist healthcare professionals by automatically extracting insights from patient histories, improving workflow efficiency and reducing manual EHR search time.
