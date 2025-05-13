@@ -43,7 +43,7 @@
 [8.1 Future Scope](#8.1-Future-Scope)
 
 
-[References](#references)
+[9 References](#9-References)
 
 # Abstract
 
@@ -722,7 +722,7 @@ Develop a clinical assistant chatbot fine-tuned on patient notes and structured 
 "Summarize the patient’s current medications."
 This chatbot can assist healthcare professionals by automatically extracting insights from patient histories, improving workflow efficiency and reducing manual EHR search time.
 
-# References 
+# 9 References 
 
 MIMIC-III Clinical Database v1.4:
 https://physionet.org/content/mimiciii/
