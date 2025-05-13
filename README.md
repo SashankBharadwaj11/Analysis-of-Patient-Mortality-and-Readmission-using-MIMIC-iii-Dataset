@@ -105,7 +105,7 @@ The main agenda of this project is to solve this problem. The solution is to bui
 
 - Even with emerging challenges in healthcare, this intelligent system supports consistent, evidence-based decision-making and better resource allocation.
 
-# 2 Literation Survey
+# 2 Literature Survey
 
 ## 2.1 Introduction
 
