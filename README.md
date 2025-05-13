@@ -290,7 +290,7 @@ Entire preprocessing flow implementation is managed using ColumnTransformer and 
 
 # 7 Model Development
 
-## 1. Objective
+## 7.1. Objective
 
 The main objectives are to:
 
@@ -306,7 +306,7 @@ The main objectives are to:
 
 - Visualize and interpret performance using metrics like precision, recall, AUC, MCC, and confusion matrices.
 
-## 2. Models Implemented
+## 7.2. Models Implemented
 
 ## 1. Logistic Regression
 - Regularization: L1/L2 penalties applied to avoid overfitting.
@@ -348,13 +348,13 @@ The main objectives are to:
 ## 5. Voting Classifier (Ensemble Model)
 
 - Combination of Models:
--     - Logistic Regression (LR), XGBoost (XGB), and Decision Tree (DT).
+ - Logistic Regression (LR), XGBoost (XGB), and Decision Tree (DT).
 
 - Voting Method: 'Soft' voting, with weights (LR=1, XGB=2, DT=1).
 
 - Best AUC for Mortality: 0.862.
 
-## 3. Evaluation Metrics
+## 7.3. Evaluation Metrics
 
 For both mortality and readmission predictions, the following evaluation metrics were used:
 
@@ -368,7 +368,7 @@ ROC, AUC: To evaluate model performance.
 
 - SHAP Explanation Plots: To explain model predictions and feature importance.
 
-## 4. Visualizations
+## 7.4. Visualizations
 - ROC and PR Curves: To visualize trade-offs between precision and recall.
 
 - Confusion Matrices: Displayed using ConfusionMatrixDisplay to evaluate the classification performance.
@@ -376,7 +376,7 @@ ROC, AUC: To evaluate model performance.
 - SHAP Plots:
 -     - SHAP summary and bar plots to show feature importance and contribution.
 
-## 5. Model Interpretability Using SHAP
+## 7.5. Model Interpretability Using SHAP
 - SHAP for Interpretability:
 
 -     - Used shap.Explainer for general models and TreeExplainer for tree-based models like XGBoost, CatBoost, and Decision Trees for SHAP values.
@@ -385,7 +385,7 @@ ROC, AUC: To evaluate model performance.
 
       - Ensured SHAP inputs matched post-transformation feature arrays for accurate explanation.
 
-6. Preprocessing and Deployment Pipeline
+## 7.6. Preprocessing and Deployment Pipeline
 
 - Preprocessing: Data preprocessing (e.g., handling missing values, encoding categorical features) was wrapped in a Pipeline for streamlined execution.
 
@@ -395,13 +395,13 @@ ROC, AUC: To evaluate model performance.
 
 -     - The pipeline ensures consistency in preprocessing during both training and inference.
 
-## 7. Known Issues
+## 7.7. Known Issues
 
 - Readmission Prediction: Class imbalance is a challenge for readmission prediction, with low sensitivity. This needs attention, potentially through threshold tuning or SMOTE (Synthetic Minority Over-sampling Technique) to balance the classes.
 
 - Ensemble Interpretability: While SHAP is used for individual components, direct interpretability for the ensemble classifier is not straightforward.
 
-## 8. Technologies Used
+## 7.8. Technologies Used
 - Python: For scripting and model development.
 
 - Libraries:
@@ -410,7 +410,7 @@ ROC, AUC: To evaluate model performance.
 -     - SHAP for model interpretability.
 -     - xgboost, catboost, scikit-learn for machine learning models.
 
-## 9. Future Work
+## 7.9. Future Work
 - Threshold Optimization: To improve the recall for readmission prediction, threshold optimization is planned.
 
 - Temporal Validation: Simulate real-world prediction scenarios by incorporating temporal validation.
@@ -421,12 +421,12 @@ ROC, AUC: To evaluate model performance.
 
 - AutoML and Stacking: Future experiments will involve stacking classifiers or using AutoML tools to further optimize model performance.
 
-## 10. Installation Requirements
+## 7.10. Installation Requirements
 To run the code and models, ensure the following libraries are installed:
 
 - pip install pandas numpy matplotlib seaborn shap xgboost catboost scikit-learn
 
-## 11. Features Used
+## 7.11. Features Used
 
 Features Used
 | Feature Type | Features                                                               |
@@ -435,7 +435,7 @@ Features Used
 | Binary       | Sepsis flag, diabetes, ventilator use, insurance type, discharge group |
 | Categorical  | Admission type, admission location, ethnicity                          |
 
-## 12. Model Results Summary
+## 7.12. Model Results Summary
 
 Model Results Summary
 
@@ -457,9 +457,283 @@ Readmission Prediction Results (Survivors Only)
 | Decision Tree         | 0.69     | 0.24     | 0.72        | 0.55        |
 | **Voting Classifier** | **0.69** | **0.17** | 0.20        | 0.92        |
 
+## 7.13. Best Model
 
-# 8 Results 
+![image](https://github.com/user-attachments/assets/4cfead5a-c2bb-4280-8b87-27e8d88aebc6)
+
+## 7.13.1 Best Mortality Prediction Model: CatBoostClassifier
+### Performance Highlights:
+
+- AUC: 0.876 – Highest among all models, indicating strong discrimination between mortality and survival.
+
+- MCC: 0.421 – Best balance of true and false positives/negatives in an imbalanced dataset.
+
+- Sensitivity: 0.278 – Slightly better than XGBoost (0.26), capturing more actual deaths.
+
+- Specificity: 0.99 – Very few false positives.
+
+### Why CatBoost?
+
+- Natively handles categorical features (e.g., admission type, ethnicity) without preprocessing.
+
+- Robust performance even on skewed clinical datasets.
+
+- Outperformed both XGBoost and ensemble models in key metrics critical to mortality prediction.
+
+### Interpretability:
+
+- SHAP values clearly identified impactful features such as:
+
+-- Number of diagnoses
+
+-- Ventilator use
+
+-- Sepsis flag
+
+-- Insurance type
+
+- Used shap.TreeExplainer and summary plots for feature importance and decision rationale.
+
+## 7.13.2 Best Readmission Prediction Model: Logistic Regression
+
+- Performance Highlights:
+
+-- MCC: 0.236 – Highest among all models, indicating best balance despite class imbalance.
+
+-- Sensitivity: 0.719 – Captured the most actual readmissions, crucial for reducing re-hospitalization.
+
+-- AUC: 0.697 – Reasonable discrimination capability.
+
+- Why Logistic Regression?
+
+-- Outperformed complex models like XGBoost and CatBoost in terms of recall for readmission.
+
+-- Simpler and interpretable, making it suitable for clinical deployment and transparency.
+
+-- Balanced trade-off between recall and false positives, prioritizing patient safety.
+
+- Interpretability:
+  
+-- Coefficients and SHAP values revealed:
+
+--- High number of diagnoses and sepsis flag increased readmission risk.
+
+--- Insurance type and length of stay also contributed significantly.
+
+## Summary: Model Selection Rationale
+
+| Task            | Best Model              | Justification                                                    |
+| --------------- | ----------------------- | ---------------------------------------------------------------- |
+| **Mortality**   | **CatBoostClassifier**  | Highest AUC & MCC; strong performance on minority class (deaths) |
+| **Readmission** | **Logistic Regression** | Best sensitivity; maximized recall for critical patient outcome  |
+
+### Metric Prioritization (for Healthcare):
+
+- ROC AUC: Measures ability to distinguish positive vs negative classes.
+
+- MCC (Matthews Correlation Coefficient): Ideal for imbalanced data; considers all error types.
+
+- Sensitivity (Recall): Crucial for catching true critical cases (e.g., deaths or readmissions).
+
+
+
+# 8. Clinical Note Embeddings
+
+## Note Types Selected
+
+- Categories: Focused on Discharge Summary, Physician Notes, and Nursing Notes
+
+- Rationale: These are clinically rich and relevant for patient outcome prediction.
+
+## Text Preprocessing
+
+- Converted text to lowercase
+
+- Removed:
+
+      Punctuation
+
+      Special characters
+
+      Extra whitespace
+
+- Goal: Reduce noise and ensure consistency
+
+## Handling Note Lengths
+
+- ClinicalBERT has a 512-token limit
+
+- Solution: Truncated notes to the first 512 tokens for model compatibility
+
+## Efficient Data Loading
+
+- Used chunked reading (chunksize=10,000) to handle large datasets efficiently and avoid memory issues
+
+## ClinicalBERT Embedding Generation
+
+### Model Selection: ClinicalBERT
+
+- Domain-specific BERT trained on MIMIC-III clinical notes
+
+- Superior to general BERT models for clinical text understanding
+
+### Model Initialization
+
+- Used HuggingFace’s AutoTokenizer and AutoModel
+
+- Handled tokenization and model architecture automatically
+
+### Embedding Extraction
+
+- Passed each cleaned note through ClinicalBERT
+
+- Extracted final hidden states
+
+- Applied mean pooling across all token embeddings (excluding [CLS], [SEP], etc.)
+
+- Result: One 768-dimensional vector per note
+
+### Merging with Structured Data
+
+- Embedding vectors stored in embedding_df with corresponding HADM_ID
+
+- Ready for merging with structured features (e.g., vitals, labs) for model input
+
+## Clinical Note Embedding Generation using ClinicalBERT
+
+### Dimensionality Reduction & Evaluation of Clinical Note Embeddings
+
+### t-SNE Projection
+
+![image](https://github.com/user-attachments/assets/d5c5b786-d64b-457f-b062-49a960e00125)
+
+### Parameters:
+
+-- Perplexity: 10
+
+-- Iterations: 1500
+
+### Metrics:
+
+-- Silhouette Score: 0.060
+
+-- Davies-Bouldin Index: ~4.00
+
+### Observations:
+
+-- High cluster overlap
+
+-- Poor separation of Nursing, Physician, and Discharge Summary
+
+-- Clinical notes share overlapping medical vocabulary, leading to semantic blending
+
+## UMAP Projection
+
+![image](https://github.com/user-attachments/assets/a20504e4-391d-4559-94cc-dec6d5395b3a)
+
+### Parameters:
+
+-- n_neighbors: 10
+
+-- min_dist: 0.1
+
+### Metrics:
+
+-- Silhouette Score: 0.060
+
+-- Davies-Bouldin Index: ~4.00
+
+### Observations:
+
+-- Better local structure preservation
+
+-- Smaller, tighter clusters
+
+-- Captured semantic proximity more effectively than t-SNE
+
+## Embedding Impact on Model Performance
+
+### Embedding Input Flow:
+
+Clinical Note ➝ ClinicalBERT ➝ 768-dim Vector ➝ Concatenate with Structured Features ➝ Prediction
+
+### Features Combined:
+
+- Structured: LOS, lab flags, age, etc.
+
+- Unstructured: Clinical notes via ClinicalBERT
+
+### Performance Gains:
+
+- Improved Sensitivity and MCC
+
+- Models became clinically more useful, especially in identifying critical outcomes
+
+## Evaluation Metrics – Before vs. After Embeddings
+
+![image](https://github.com/user-attachments/assets/48a31583-a419-4bb5-964f-6ff312d897c4)
+
+## Sample Results
+
+![image](https://github.com/user-attachments/assets/9bfb0883-8a45-4f4e-8f1d-e5bc246b25ee)
+
+# Inference
+
+INPUT:
+Structured values: LOS, lab flags, age, etc.
+Unstructured note (raw clinical text)
+
+![image](https://github.com/user-attachments/assets/3d472a04-0eb8-40b2-b32a-0f69e742b746)
+
+### Output:
+
+- Mortality risk
+
+- Readmission likelihood
 
 # 9 Conclusion and Future Scope
 
 # References 
+
+MIMIC-III Clinical Database v1.4:
+https://physionet.org/content/mimiciii/
+
+Research Papers
+CPLLM: Clinical Prediction with Large Language Models:
+https://arxiv.org/abs/2309.11295
+
+A Multimodal Transformer: Fusing Clinical Notes with Structured EHR Data for Interpretable In-Hospital Mortality Prediction:
+https://arxiv.org/abs/2208.10240
+
+ClinicalBERT & NLP Models
+ClinicalBERT Model Card:
+https://huggingface.co/medicalai/ClinicalBERT
+
+Bio_ClinicalBERT Model Card:
+https://huggingface.co/emilyalsentzer/Bio_ClinicalBERT
+
+ClinicalBERT GitHub Repository:
+https://github.com/kexinhuang12345/clinicalBERT
+
+ClinicalBERT Research Paper:
+https://arxiv.org/abs/1904.05342
+
+Streamlit
+Streamlit Official Documentation:
+https://docs.streamlit.io/
+
+Streamlit GitHub Repository:
+https://github.com/streamlit/streamlit
+
+Streamlit Official Website:
+https://streamlit.io/
+
+Hugging Face Transformers
+Transformers Library Documentation:
+https://huggingface.co/docs/transformers/en/index
+
+Transformers GitHub Repository:
+https://github.com/huggingface/transformers
+
+Transformers Research Paper:
+https://arxiv.org/abs/1910.03771
