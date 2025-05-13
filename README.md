@@ -5,18 +5,17 @@
 [Contents](#Contents)
 
 [1 Introduction](#1-introduction)  
- [1.1 Problem Statement](#11-problem-statement)  
- [1.2 Objectives](#12-objectives)  
- [1.3 Societal Applications](#13-societal-applications)  
+[1.1 Problem Statement](#11-problem-statement)  
+[1.2 Objectives](#12-objectives)  
+[1.3 Societal Applications](#13-societal-applications)  
 
 [2 Literature Survey](#2-literature-survey)  
- [2.1 Introduction](#21-introduction)  
- [2.2 Analyzing the Existing System](#22-analyzing-the-existing-system)  
-
+[2.1 Introduction](#21-introduction)  
+[2.2 Analyzing the Existing System](#22-analyzing-the-existing-system)  
 
 [3 Dataset Description](#3-Dataset-Description)  
- [3.1 Overview](3.1-overview)  
- [3.2 Data Cleaning and Preprocessing](3.2-Data-Cleaning-and-Preprocessing)
+[3.1 Overview](3.1-overview)  
+[3.2 Data Cleaning and Preprocessing](3.2-Data-Cleaning-and-Preprocessing)
 
 [4 Analysis](#4-analysis)  
 [4.1 Visualizations](#4-visualizations)  
@@ -27,7 +26,9 @@
 
 [7 Results](#7-results)  
 
-[8 Conclusion and Future Scope](#8-conclusion-and-future-scope)  
+[8 Conclusion](#8-Conclusion)
+[8.1 Future Scope](#8.1-Future-Scope)
+
 
 [References](#references)
 
